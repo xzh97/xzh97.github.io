@@ -1,5 +1,207 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 介绍 · 追梦的蚂蚁</title><meta name="description" content="介绍 - xzh"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="/css/gitalk.1.5.0.css"><link rel="search" type="application/opensearchdescription+xml" href="https://xzh97.github.io/atom.xml" title="追梦的蚂蚁"><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="追梦的蚂蚁" type="application/atom+xml">
-</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/xzh97" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">介绍</h1><div class="post-info">Dec 15, 2019</div><div class="post-content"><h2 id="为什么要做博客？"><a class="header-anchor" href="#为什么要做博客？"></a>为什么要做博客？</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xzh">
+
+
+    <meta name="subtitle" content="何须仰望他人，自己亦是风景">
+
+
+    <meta name="description" content="xzh的个人博客">
+
+
+    <meta name="keywords" content="xzh,博客">
+
+
+<title>介绍 | 追梦的蚂蚁</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/js/gitalk.1.5.0.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="追梦的蚂蚁" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xzh97&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xzh97&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">介绍</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">xzh</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 15, 2019&nbsp;&nbsp;11:07:44</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="为什么要做博客？"><a class="header-anchor" href="#为什么要做博客？"></a>为什么要做博客？</h2>
 <p>弄个博客其实更多的是想让自己有一个独立的空间吧。算是个自己的狭小空间？这么说感觉有点中二诶。但主要意思到了应该就行。<br>
 主要还是用来记录自己的学习总结、工作总结。😄</p>
 <h2 id="为什么转用hexo加github来做博客？"><a class="header-anchor" href="#为什么转用hexo加github来做博客？"></a>为什么转用hexo加github来做博客？</h2>
@@ -14,14 +216,97 @@ hexo的大门。</p>
 <strong>学习的话是要持续不断的。我这里主要总结的内容会来自于github的<a href="https://github.com/haizlin/fe-interview" target="_blank" rel="noopener">fe-interview</a>，希望自己能跟上脚步，每天都能学习一些东西</strong><br>
 <strong>至于发布频率的话，我尽量保持一天一篇吧。 但也不能完全保证，有时候加班比较忙的话，就不一定有时间写了。</strong></p>
 <p>That’s all!</p>
-</div></article></div></main><footer><div class="paginator"><a href="/2019/12/15/offline-storage/" class="prev">PREV</a><a href="/2019/12/14/hello-world/" class="next">NEXT</a></div><div id="gitalk-container"></div><script src="/js/gitalk.1.5.0.min.js"></script><script>var params = {
-    clientID:"73f1c80bba01cb73e53d",
-    clientSecret:"fb38d78684a17e97a441a4cd0db47dc642423678",
-    repo:"xzh97.github.io",
-    admin:"xzh97",
-    id:window.location.pathname,
-    owner:"xzh97",
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xzh</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://xzh97.github.io/2019/12/15/introduction/">https://xzh97.github.io/2019/12/15/introduction/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>最是人间孤愤难平，直消得几回潮落又潮生！</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/intro/"># intro</a>
+                    
+                        <a href="/tags/xzh/"># xzh</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/12/15/offline-storage/">web端的离线存储方式</a>
+            
+            
+            <a class="next" rel="next" href="/2019/12/14/hello-world/">Hello World</a>
+            
+        </section>
+
+        
+        
+        <script type="text/javascript" async>
+    let gitalkContainer = document.createElement('div')
+    let postWrap = document.querySelector('.post-wrap');
+    gitalkContainer.id = 'gitalk-container'
+    postWrap.appendChild(gitalkContainer);
+    let params = {
+    clientID: '73f1c80bba01cb73e53d',
+    clientSecret: 'fb38d78684a17e97a441a4cd0db47dc642423678',
+    repo: 'xzh97.github.io',
+    admin: ['xzh97'],
+    id: window.location.pathname,
+    owner: 'xzh97',
     distractionFreeMode: false,
-};
-var gitalk = new Gitalk(params)
-gitalk.render('gitalk-container');</script><div class="copyright"><p>© 2015 - 2020 <a href="https://xzh97.github.io">xzh</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
+    }
+    let gitalk = new Gitalk(params)
+    gitalk.render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xzh | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
