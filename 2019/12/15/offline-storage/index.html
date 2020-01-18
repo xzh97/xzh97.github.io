@@ -252,7 +252,7 @@
 </ul>
 <h2 id="Cookie"><a class="header-anchor" href="#Cookie"></a>Cookie</h2>
 <p>cookie是由后端服务器端创建保存在客服端一种数据库结构。浏览器请求和后端服务端响应都会携带创建的cookie来回传输。cookie在传输时存储在请求头和响应头中。<br>
-**原理：**客户端请求服务器时，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie。而客户端浏览器会把Cookie保存起来。当浏览器再请求服务器时，浏览器把请求的网址连同该Cookie一同提交给服务器。服务器通过检查该Cookie来获取用户状态。<br>
+<em>原理</em>客户端请求服务器时，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie。而客户端浏览器会把Cookie保存起来。当浏览器再请求服务器时，浏览器把请求的网址连同该Cookie一同提交给服务器。服务器通过检查该Cookie来获取用户状态。<br>
 **版本：**cookie有两个版本：version0和version1，它们两种设置响应头的标识，分别是“Set-Cookie”和“Set-Cookie2”。这两个版本的属性项有些不同。但是version1已经被废弃了。<br>
 <strong>优点</strong></p>
 <ul>
