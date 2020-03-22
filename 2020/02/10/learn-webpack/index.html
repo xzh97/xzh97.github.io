@@ -18,7 +18,7 @@
     <meta name="keywords" content="xzh,博客">
 
 
-<title>从输入URL到页面展示的过程 | 追梦的蚂蚁</title>
+<title>Webpack学习笔记（一） | 追梦的蚂蚁</title>
 
 
 
@@ -183,7 +183,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">从输入URL到页面展示的过程</h1>
+            <h1 class="post-title">Webpack学习笔记（一）</h1>
             
                 <div class="post-meta">
                     
@@ -192,14 +192,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">January 15, 2020&nbsp;&nbsp;20:56:57</a>
+                        Date: <a href="#">February 10, 2020&nbsp;&nbsp;11:51:23</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/HTML5/">HTML5</a>
+                                <a href="/categories/webpack/">webpack</a>
                             
                         </span>
                     
@@ -209,68 +209,31 @@
 
         <div class="post-content">
             <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
-<p>讲道理，之前说过的一<s>天</s>月一篇其实是开玩笑的。莫名其妙就这么久没写过博客了。今天在回家的路上突然想起了这个问题----“从输入url到页面展示的过程有哪些？”。其实也不算突然吧，其实想想好像看面试题的时候经常会出现这么一道题目。今天就照着自己想到的东西来写这么一篇。</p>
-<h2 id="过程"><a class="header-anchor" href="#过程"></a>过程</h2>
+<p>2020魔幻开年，感觉今年问题更多。 当然这跟我今天的主题并没有啥关系哈哈哈</p>
+<h2 id="概念"><a class="header-anchor" href="#概念"></a>概念</h2>
+<p>Webpack是一个前端资源加载/打包工具，前端工程化主要就是靠这些打包工具来体现</p>
+<h2 id="Webpack基础配置"><a class="header-anchor" href="#Webpack基础配置"></a>Webpack基础配置</h2>
 <ul>
-<li>DNS解析输入的域名
+<li>入口(entry): 用来配置入口文件，告诉<code>webpack</code>应该从哪里开始打包</li>
+<li>输出(output): 配置最终打包生成的目录，通常为<code>dist</code></li>
+</ul>
+<h2 id="loaders"><a class="header-anchor" href="#loaders"></a>loaders</h2>
+<p>这里就简单写一些常用的loader的作用</p>
 <ul>
-<li>目的：解析域名获取ip</li>
-<li>过程：
-<ol>
-<li>浏览器缓存中查找是否有该域名对应的ip地址</li>
-<li>操作系统缓存中查找是否有该域名对应的ip地址</li>
-<li>向本地域名服务器来请求解析</li>
-<li>向上一级域名服务器请求解析</li>
-<li>重复4步骤，一直到根服务器为止</li>
-<li>返回解析出的结果，并且缓存到本地域名服务器以及操作系统缓存中</li>
-</ol>
-</li>
+<li><code>css-loader</code>: 解析<code>css</code>文件</li>
+<li><code>style-loader</code>: 把解析好的<code>css</code>用<code>style</code>标签显示出来</li>
+<li><code>babel-loader</code>: 把<code>es6</code>及之后的语法解析成<code>es5</code>语法，最大的作用就是兼容浏览器。</li>
+<li><code>url-loader</code>,<code>file-loader</code>: <code>webpack</code>加载图片, <code>url-loader</code>更像是<code>file-loader</code>的增强版。当设置<code>limit</code>时，超出此范围则用<code>file-loader</code>解析，小于则返回<code>base64</code>格式。</li>
+<li><code>raw-loader</code>: 读取文件内的内容，并作为字符串返回</li>
+<li><code>sass-loader</code>,<code>less-loader</code>: css预编译文件解析。但是!!用的时候要记得：<strong><code>css-loader</code>和<code>style-loader</code>一起用且顺序排列有要求，从右往左依次调用。即：<code>['style-loader','css-loader','sass-loader/less-loader']</code></strong></li>
+<li><code>vue-loader</code>: 解析<code>.vue</code>文件</li>
 </ul>
-</li>
-<li>向服务端发出TCP连接
+<h2 id="plugins"><a class="header-anchor" href="#plugins"></a>plugins</h2>
 <ul>
-<li>目的：获取稳定可靠的连接</li>
-<li>TCP三次握手过程：
-<ol>
-<li>客户端向服务端发出一个数据包</li>
-<li>服务端接收到客户端发送的数据包并打上确认的标记，然后返回给客户端</li>
-<li>客户端接收到数据包，加上确认标记。再次发送给服务端。</li>
-<li>建立连接</li>
-</ol>
-</li>
+<li><code>html-webpack-plugin</code>:</li>
+<li>为<code>html</code>文件引入外部资源如<code>script</code>，<code>link</code>动态添加每次<code>compile</code>后的<code>hash</code>，防止引用的缓存问题。</li>
+<li>可以生成创建html入口文件。</li>
 </ul>
-</li>
-<li>web端发送请求，服务端返回资源给客户端。</li>
-<li>web端解析并渲染资源（正常结构）
-<ul>
-<li>知识点：web端如何渲染</li>
-<li>渲染过程：
-<ol>
-<li>解析HTML文档构建DOM树，解析CSS构建CSSOM</li>
-<li>DOM树和CSSOM合并成一个节点树</li>
-<li>浏览器通过节点树计算节点在页面所处的位置</li>
-<li>浏览器渲染节点</li>
-</ol>
-</li>
-<li>其它知识：
-<ol>
-<li>重绘：节点的视觉属性发生变化，例如<code>color</code>,<code>font</code>等的变化，引起的浏览器重新绘制节点的行为。</li>
-<li>回流：节点的位置属性发生变化，例如<code>left,top,right,bottom,display:none,width,height</code>等的变化，引起的浏览器重新计算节点位置并绘制节点的行为</li>
-<li>重绘和回流的关系： 重绘不一定回流，回流必然会引起重绘</li>
-<li>优化：
-<ul>
-<li>尽量避免直接操作DOM节点</li>
-<li>可以使用<code>position</code>把一些复杂动画的节点脱离文档流。从而避免其父元素及周围元素发生变化从而引起回流</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
-<p>以上就是对url输入到页面展示的过程的一些知识的理解和总结。其实还可以再往细来讲，不过由于自己知识水平有限，对于网络协议以及数据包结构的理解不深，想了想还是不丢人现眼了哈哈哈。<br>
-That’s all!</p>
 
         </div>
 
@@ -285,7 +248,7 @@ That’s all!</p>
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://xzh97.github.io/2020/01/15/url-parse/">https://xzh97.github.io/2020/01/15/url-parse/</a></span>
+                        <span><a href="https://xzh97.github.io/2020/02/10/learn-webpack/">https://xzh97.github.io/2020/02/10/learn-webpack/</a></span>
                     </p>
                 
                 
@@ -309,9 +272,11 @@ That’s all!</p>
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                        <a href="/tags/webpack/"># webpack</a>
                     
-                        <a href="/tags/HTML/"># HTML</a>
+                        <a href="/tags/%E5%85%A5%E9%97%A8/"># 入门</a>
+                    
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0/"># 学习</a>
                     
                         
                 </span>
@@ -324,10 +289,8 @@ That’s all!</p>
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/02/10/learn-webpack/">Webpack学习笔记（一）</a>
             
-            
-            <a class="next" rel="next" href="/2019/12/18/hexo-add-gitalk/">hexo添加gitalk作为博客评论系统</a>
+            <a class="next" rel="next" href="/2020/01/15/url-parse/">从输入URL到页面展示的过程</a>
             
         </section>
 

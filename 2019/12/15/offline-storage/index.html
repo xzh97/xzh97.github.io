@@ -224,8 +224,8 @@
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Using_the_application_cache" target="_blank" rel="noopener">Application Cache</a>目前已经被web标准废弃。这里不多讲，有兴趣的自行去了解一下吧。</p>
 <h2 id="localStorage，sessionStorage（以下统称为storage）"><a class="header-anchor" href="#localStorage，sessionStorage（以下统称为storage）"></a>localStorage，sessionStorage（以下统称为storage）</h2>
 <p><code>storage</code>都是H5新增的离线储存方式。<br>
-<strong>浏览器兼容性：</strong><code>IE8+，Chrome，Firefox，Safari，Opera</code><br>
-**存储方式：**它们会以键值对的形式存储数据（需注意的是，存储的数据必须是字符串格式）<br>
+<strong>浏览器兼容性</strong>：<code>IE8+，Chrome，Firefox，Safari，Opera</code><br>
+<strong>存储方式</strong>：它们会以键值对的形式存储数据（需注意的是，存储的数据必须是字符串格式）<br>
 <strong>优点</strong></p>
 <ul>
 <li>存储量大</li>
@@ -252,8 +252,8 @@
 </ul>
 <h2 id="Cookie"><a class="header-anchor" href="#Cookie"></a>Cookie</h2>
 <p>cookie是由后端服务器端创建保存在客服端一种数据库结构。浏览器请求和后端服务端响应都会携带创建的cookie来回传输。cookie在传输时存储在请求头和响应头中。<br>
-<em>原理</em>客户端请求服务器时，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie。而客户端浏览器会把Cookie保存起来。当浏览器再请求服务器时，浏览器把请求的网址连同该Cookie一同提交给服务器。服务器通过检查该Cookie来获取用户状态。<br>
-**版本：**cookie有两个版本：version0和version1，它们两种设置响应头的标识，分别是“Set-Cookie”和“Set-Cookie2”。这两个版本的属性项有些不同。但是version1已经被废弃了。<br>
+<strong>原理</strong>：客户端请求服务器时，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie。而客户端浏览器会把Cookie保存起来。当浏览器再请求服务器时，浏览器把请求的网址连同该Cookie一同提交给服务器。服务器通过检查该Cookie来获取用户状态。<br>
+<strong>版本</strong>：cookie有两个版本：version0和version1，它们两种设置响应头的标识，分别是“Set-Cookie”和“Set-Cookie2”。这两个版本的属性项有些不同。但是version1已经被废弃了。<br>
 <strong>优点</strong></p>
 <ul>
 <li>拓展性和可用性都很好</li>
@@ -286,7 +286,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">"username"</span>,<span class="string">"xzh"</span>);<span class="comment">// 新建一个Cookie对象</span></span><br><span class="line">cookie.setMaxAge(<span class="number">0</span>);                    <span class="comment">// 设置为0表示要删除</span></span><br><span class="line">response.addCookie(cookie);                    <span class="comment">// 执行后就从response里删除了</span></span><br></pre></td></tr></table></figure>
 <h2 id="WebSQL"><a class="header-anchor" href="#WebSQL"></a>WebSQL</h2>
 <p><a href="https://www.runoob.com/html/html5-web-sql.html" target="_blank" rel="noopener">Web SQL</a> 数据库 API 并不是 HTML5 规范的一部分，但是它是一个独立的规范，引入了一组使用 SQL 操作客户端数据库的 APIs。<br>
-**浏览器兼容性：**Web SQL 数据库可以在最新版的 Safari, Chrome 和 Opera 浏览器中工作。<br>
+<strong>浏览器兼容性</strong>：Web SQL 数据库可以在最新版的 Safari, Chrome 和 Opera 浏览器中工作。<br>
 <strong>核心方法</strong><br>
 以下是规范中定义的三个核心方法：</p>
 <ul>
