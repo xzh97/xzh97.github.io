@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xzh">
+
+
+    <meta name="subtitle" content="何须仰望他人，自己亦是风景">
+
+
+    <meta name="description" content="xzh的个人博客">
+
+
+    <meta name="keywords" content="xzh,博客">
+
+
+<title>interview | 追梦的蚂蚁</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/js/gitalk-1.6.2.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="追梦的蚂蚁" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xzh97&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xzh97&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">interview</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">xzh</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 8, 2020&nbsp;&nbsp;23:07:22</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
+<p>这周二的早上电话面试了，面的结果很差。 这里把问的问题总结一下，然后自己在对照着复习一下。</p>
+<h2 id="面试题"><a class="header-anchor" href="#面试题"></a>面试题</h2>
+<h3 id="自我介绍"><a class="header-anchor" href="#自我介绍"></a>自我介绍</h3>
+<p>name，education，skill，career planning（职业规划）</p>
+<h3 id="谈一下js的this"><a class="header-anchor" href="#谈一下js的this"></a>谈一下js的this</h3>
+<ul>
+<li>this不是在声明时确定的，而是在运行时确定的</li>
+<li>非严格模式下，this一般指向window，严格模式下，this一般指向undefined</li>
+<li>new会改变this的指向。(new的过程)
+<ul>
+<li>实例化一个object，</li>
+<li>object.<strong>proto</strong> 指向构造函数的prototype</li>
+<li>通过this将属性和方法添加至对象</li>
+<li>如果构造函数内无显示return会隐式的返回实例化的对象。若有显示return，则返回return的东西</li>
+</ul>
+</li>
+<li>call(obj,arg1,arg2,…argn)和apply(obj,[…arguments])的区别</li>
+<li>() =&gt; {}，this由当前的执行上下文决定。</li>
+</ul>
+<h3 id="js的作用域是什么？-let和var的区别？"><a class="header-anchor" href="#js的作用域是什么？-let和var的区别？"></a>js的作用域是什么？ let和var的区别？</h3>
+<ul>
+<li>js分为全局作用域和函数作用域</li>
+<li>let为块级作用域，var声明的可以在当前函数作用域内都能找到，而let只能在当前的代码块内使用。</li>
+<li>变量提升和暂时性死区</li>
+<li>变量提升：变量可以在声明之前就使用，值为<code>undefined</code>
+<ul>
+<li>js执行时，第一步就是把var的变量做一个声明。举个例子： console.log(a); var a = 1; //console的结果为undefined。 实际上js的执行方式是 var a; console.log(a); a = 1;</li>
+</ul>
+</li>
+<li>暂时性死区：let声明的变量，在声明之前使用都会报错。
+<ul>
+<li>例如：var a = 1; if(true){console.log(a); let a = 2;} //此时结果会报错。即在let声明之前，该变量都不能使用。</li>
+</ul>
+</li>
+</ul>
+<h3 id="闭包原理，为什么要用？闭包的使用场景？"><a class="header-anchor" href="#闭包原理，为什么要用？闭包的使用场景？"></a>闭包原理，为什么要用？闭包的使用场景？</h3>
+<ul>
+<li>闭包： 一个函数能够访问该函数外部作用域的变量</li>
+<li>eg：function(){ var a = 1; return function (){console.log(a)}};</li>
+<li>缺点：使用不当容易造成堆栈溢出。</li>
+<li>使用场景：
+<ul>
+<li>传参：</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(a) &#x3D;&gt; &#123;setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;,0)&#123;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数回调：</li>
+<li>封装私有变量</li>
+</ul>
+</li>
+</ul>
+<h3 id="promise-async-await"><a class="header-anchor" href="#promise-async-await"></a>promise,async await</h3>
+<h3 id="url到页面呈现的过程"><a class="header-anchor" href="#url到页面呈现的过程"></a>url到页面呈现的过程</h3>
+<p><a href="https://xzh97.github.io/2020/01/15/url-parse/">点击此处可查看</a></p>
+<h3 id="js事件机制（冒泡和捕获，addEventListener）"><a class="header-anchor" href="#js事件机制（冒泡和捕获，addEventListener）"></a>js事件机制（冒泡和捕获，addEventListener）</h3>
+<h3 id="eventLoop要点"><a class="header-anchor" href="#eventLoop要点"></a>eventLoop要点</h3>
+<ul>
+<li>讲出宏队列和微队列</li>
+<li>栈：先进先出，</li>
+<li>宏队列：<code>全局script</code>, <code>setTimeout</code>, <code>setInterval</code>, <code>setImmediate(只有IE10支持)</code>, <code>I/O操作</code> 。</li>
+<li>微队列：<code>promise</code>, <code>Object.observe</code>, <code>Process.nextTick(node独有)</code>。</li>
+<li>eventLoop步骤：
+<ol>
+<li>执行全局script代码，此时有同步和异步任务。分别添加到宏队列和微队列中。</li>
+<li>把宏队列加入到当前任务队列里执行，执行完后清空任务队列。</li>
+<li>把微队列加入到当前任务队列里依次执行，执行完后清空任务队列。（若微队列中仍有异步任务，加到微队列末尾且在同一周期内执行）。</li>
+<li>重复2-3步骤</li>
+</ol>
+</li>
+</ul>
+<h3 id="cookie和session"><a class="header-anchor" href="#cookie和session"></a>cookie和session</h3>
+<ul>
+<li><a href="https://xzh97.github.io/2019/12/15/offline-storage/">点击此处可查看cookie相关</a></li>
+<li>session
+<ul>
+<li>存在服务端</li>
+<li>sessionId一般来说也是存在cookie里的。</li>
+<li>如果不支持cookie，就只能重写url</li>
+</ul>
+</li>
+</ul>
+<h3 id="vue双向绑定原理"><a class="header-anchor" href="#vue双向绑定原理"></a>vue双向绑定原理</h3>
+<ul>
+<li>利用了Object.defineProperty();重新定义了对象获取属性的set和get方法。</li>
+</ul>
+<h3 id="vue-router原理"><a class="header-anchor" href="#vue-router原理"></a>vue-router原理</h3>
+<ul>
+<li>router的两种模式：Hash和History</li>
+<li>hash: 通常表现为/#/url,
+<ul>
+<li>hash（#）是URL 的锚点，代表的是网页中的一个位置，单单改变#后的部分，浏览器只会滚动到相应位置，不会重新加载网页，也就是说 #是用来指导浏览器动作的，对服务器端完全无用，HTTP请求中也不会不包括#；同时每一次改变#后的部分，都会在浏览器的访问历史中增加一个记录，使用”后退”按钮，就可以回到上一个位置；</li>
+</ul>
+</li>
+<li>History:  HTML5 History API提供了一种功能，能让开发人员在不刷新整个页面的情况下修改站点的URL，就是利用 history.pushState API 来完成 URL 跳转而无须重新加载页面；</li>
+</ul>
+<h3 id="vue的nextTick"><a class="header-anchor" href="#vue的nextTick"></a>vue的nextTick</h3>
+<ul>
+<li>作用：延迟执行代码</li>
+<li>原理：因为vue更新数据之后，视图不是立即响应的就进行变化，而是等待此次时间循环结束之后才变化。而有的交互操作需要在新的视图下进行，为了保证代码能准确的运行，</li>
+<li>用途：需要在视图更新之后，基于新的视图进行操作</li>
+</ul>
+<h3 id="如何设计好的组件"><a class="header-anchor" href="#如何设计好的组件"></a>如何设计好的组件</h3>
+<h3 id="前端首页白屏以及优化方式"><a class="header-anchor" href="#前端首页白屏以及优化方式"></a>前端首页白屏以及优化方式</h3>
+<ul>
+<li>首页白屏：前端请求完数据后需要时间来计算render树，在计算的这段时间，页面会显示成白屏</li>
+<li>优化方式：
+<ul>
+<li>ssr 服务端渲染</li>
+<li>开启gzip压缩</li>
+<li>动态加载</li>
+<li>缓存静态资源</li>
+<li>代码层面：
+<ul>
+<li>css放在head里，js放在body后</li>
+<li>少放base64格式的资源在css里（减小css体积）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="跨域（方式以及jsonp原理）"><a class="header-anchor" href="#跨域（方式以及jsonp原理）"></a>跨域（方式以及jsonp原理）</h3>
+<ul>
+<li>浏览器同源策略：同域名，同协议，同端口</li>
+<li>cors跨域，前后端配合。设置allow-cross-origin</li>
+<li>jsonp原理：srcipt的src属性无跨域限制，相同的还有img标签</li>
+<li>jsonp跨域实践：动态创建一个script元素，callback指向定义好的回调函数，在回调内可获得接口返回的数据</li>
+</ul>
+<h3 id="this指向的理解"><a class="header-anchor" href="#this指向的理解"></a>this指向的理解</h3>
+<ul>
+<li>this不在声明时确定，而是在执行时确定</li>
+<li>非严格模式下一般来说this指向window，严格模式下一般指向undefined</li>
+<li>new 构造函数时会指向返回的实例对象，这是因为new 会改变this的指向</li>
+<li>call，apply的区别，它们都能改变this的指向，区别在于接收的参数方式，call接收的是一个参数列表，例如call(null,arg1,arg2,…argx)。而apply接收的是一个参数组成的数组，例如apply(null,[…args])。</li>
+<li>箭头函数的this由当前执行的上下文来决定的</li>
+</ul>
+<h3 id="项目权限控制"><a class="header-anchor" href="#项目权限控制"></a>项目权限控制</h3>
+<ul>
+<li>app：通过判断接口是否返回401，且该接口不是获取token的接口。若报401则再调用refreshtoken方法（web端当&gt;=5个接口报401时，会自动定向到登录页面）</li>
+<li>refreshToken是为了续接，判断401之后，用refreshToken来重新获取token。获取成功之后，再次进行之前的操作。 效果：达到无缝连接，减少用户操作。体验更好</li>
+</ul>
+<h3 id="flux原理-vuex和redux原理"><a class="header-anchor" href="#flux原理-vuex和redux原理"></a>flux原理(vuex和redux原理)</h3>
+<ul>
+<li>Flux是单向数据流</li>
+<li>flux流程：action -&gt; dispatcher -&gt; store -&gt; view -&gt; action</li>
+<li>redux原理是通过提供一个provider组件，来提供一个全局可以访问到的state</li>
+</ul>
+<h3 id="web优化"><a class="header-anchor" href="#web优化"></a>web优化</h3>
+<ul>
+<li>服务优化
+<ul>
+<li>减少请求数量（css sprite，）</li>
+<li>减少请求体积（gzip压缩，）</li>
+<li>加快请求速度（cdn分发：cdn实际就是把静态的资源放在多个服务器上，请求的时候会找最近的服务器请求该资源）</li>
+</ul>
+</li>
+<li>页面
+<ul>
+<li>减小体积（压缩代码体积）</li>
+<li>动态加载（() =&gt; import()，webpack的require，splitchunk）</li>
+<li>dll（把不频繁更新的第三方代码，打成dll）</li>
+<li>css优化（尽量不使用元素选择器：css的解析规则是从右到左，例如：div #box2的解析规则是先找id为box2的元素，再找是div标签，提高解析效率）</li>
+</ul>
+</li>
+<li>缓存（其实就是减少请求数量，但如何确保及时更新又是一个新的大坑）
+<ul>
+<li>请求缓存
+<ul>
+<li>协商缓存（弱缓存）
+<ul>
+<li>last-modified/If-modified-since（last-modified就是服务端最后修改的时间，如果有变化，就请求，相同则返回缓存的值）</li>
+<li>etag/If-none-match（etag：服务端会给资源设置唯一标识字符串，如果有改动就会修改该字符串，所以只需要判断etag是否改变就能确定是否需要重新请求）</li>
+<li>etag优先级高于last-modified</li>
+</ul>
+</li>
+<li>强缓存
+<ul>
+<li>expires 在过期时间之前，资源会一直缓存</li>
+<li>cache-control：和服务端协商出来一个过期时间，过期之前一直请求缓存的资源</li>
+</ul>
+</li>
+<li>请求的判断方式：先强后弱，先cache-control再expires，先etag再last-modified</li>
+</ul>
+</li>
+<li>页面缓存
+<ul>
+<li>cookie</li>
+<li>H5的storage</li>
+<li>server-worker（没用过）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xzh</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://xzh97.github.io/2020/04/08/interview/">https://xzh97.github.io/2020/04/08/interview/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>最是人间孤愤难平，直消得几回潮落又潮生！</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/interview/"># interview</a>
+                    
+                        <a href="/tags/%E9%9D%A2%E8%AF%95/"># 面试</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/02/10/learn-webpack/">Webpack学习笔记（一）</a>
+            
+        </section>
+
+        
+        
+        <script type="text/javascript" async>
+    let gitalkContainer = document.createElement('div')
+    let postWrap = document.querySelector('.post-wrap');
+    gitalkContainer.id = 'gitalk-container'
+    postWrap.appendChild(gitalkContainer);
+    let params = {
+    clientID: '73f1c80bba01cb73e53d',
+    clientSecret: 'fb38d78684a17e97a441a4cd0db47dc642423678',
+    repo: 'xzh97.github.io',
+    admin: ['xzh97'],
+    id: window.location.pathname,
+    owner: 'xzh97',
+    distractionFreeMode: false,
+    }
+    let gitalk = new Gitalk(params)
+    gitalk.render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xzh | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

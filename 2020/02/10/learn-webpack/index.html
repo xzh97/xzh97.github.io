@@ -40,7 +40,7 @@
     
     <script src="/js/tocbot.min.js"></script>
     
-    <script src="/js/gitalk.1.5.0.min.js"></script>
+    <script src="/js/gitalk-1.6.2.min.js"></script>
     
 
 
@@ -209,7 +209,7 @@
 
         <div class="post-content">
             <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
-<p>2020魔幻开年，感觉今年问题更多。 当然这跟我今天的主题并没有啥关系哈哈哈</p>
+<p>2020魔幻开年，感觉今年问题更多。 当然这跟我今天的主题并没有啥关系哈哈哈。学习还是要学的，毕竟我馋<code>webpack</code>已经很久了😜。</p>
 <h2 id="概念"><a class="header-anchor" href="#概念"></a>概念</h2>
 <p>Webpack是一个前端资源加载/打包工具，前端工程化主要就是靠这些打包工具来体现</p>
 <h2 id="Webpack基础配置"><a class="header-anchor" href="#Webpack基础配置"></a>Webpack基础配置</h2>
@@ -229,11 +229,14 @@
 <li><code>vue-loader</code>: 解析<code>.vue</code>文件</li>
 </ul>
 <h2 id="plugins"><a class="header-anchor" href="#plugins"></a>plugins</h2>
-<ul>
-<li><code>html-webpack-plugin</code>:</li>
-<li>为<code>html</code>文件引入外部资源如<code>script</code>，<code>link</code>动态添加每次<code>compile</code>后的<code>hash</code>，防止引用的缓存问题。</li>
-<li>可以生成创建html入口文件。</li>
-</ul>
+<pre><code>* `html-webpack-plugin`:
+    * 为`html`文件引入外部资源如`script`，`link`动态添加每次`compile`后的`hash`，防止引用的缓存问题。
+    * 可以生成创建html入口文件。
+* `clean-webpack-plugin`:
+    * 清理dist文件
+</code></pre>
+<h2 id="感言"><a class="header-anchor" href="#感言"></a>感言</h2>
+<p>看了一下webpack的官网，发现还要好多好东西要学。最近加班很严重，感觉很累。学习的兴趣都减少了好多。</p>
 
         </div>
 
@@ -288,6 +291,8 @@
             </div>
         </section>
         <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/04/08/interview/">interview</a>
             
             
             <a class="next" rel="next" href="/2020/01/15/url-parse/">从输入URL到页面展示的过程</a>
