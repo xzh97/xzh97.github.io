@@ -40,7 +40,7 @@
     
     <script src="/js/tocbot.min.js"></script>
     
-    <script src="/js/gitalk-1.6.2.min.js"></script>
+    <script src="/js/gitalk.1.5.2.min.js"></script>
     
 
 
@@ -332,6 +332,23 @@
 <p>一方面是在选用组件的时候选用名声可信，社区活跃，安全机制较为完善的第三方组件；另一方面需要持续关注新漏洞的发布。</p>
 <h3 id="Insufficient-Logging-Monitoring-（不足的日志和监控）"><a class="header-anchor" href="#Insufficient-Logging-Monitoring-（不足的日志和监控）"></a>Insufficient Logging &amp; Monitoring. （不足的日志和监控）</h3>
 <p>这部分属于安全运营部分，主要是在程序设计时候要留有足够的日志整段信息来追踪漏洞，</p>
+<h3 id="Cross-site-Request-Forgery-跨站请求伪造"><a class="header-anchor" href="#Cross-site-Request-Forgery-跨站请求伪造"></a>Cross-site Request Forgery(跨站请求伪造)</h3>
+<p>这个是培训时没有说明但实际上对FE来说是需要了解的。所以在这里加进来进行补充说明。</p>
+<h4 id="原理"><a class="header-anchor" href="#原理"></a>原理</h4>
+<ul>
+<li><strong>用户C</strong>登录受信任的<strong>站点A</strong></li>
+<li>浏览器生成站点A的cookie信息</li>
+<li>未登出的情况下访问<strong>恶意网站B</strong>（其实登出也不一定，因为不能保证cookie登出后就会失效）</li>
+<li>网站B向网站A发起请求，该请求会带上步骤2的cookie信息</li>
+<li>网站B通过该cookie信息，伪装成用户C进行操作（邮件/信息/转账等等）</li>
+</ul>
+<h4 id="对策-v5"><a class="header-anchor" href="#对策-v5"></a>对策</h4>
+<ul>
+<li>验证 HTTP Referer 字段：Referer字段是用来记录请求的来源地址，因为CSRF一般需要自己构造表单来请求。所以referer字段会不一样，所以对于referer不符合的，直接拒绝请求</li>
+<li>cookie中加入hash： 在cookie中加入hash，然后在后端校验hash值是否正确，来判断请求是否是真的客户发送的</li>
+<li>cookie设置为httpOnly：可以有效减少cookie被获取的风险</li>
+<li>其实总的来说，上面的方法其实防御思路都一样。<strong>就是通过在请求中加入攻击者伪造不了的信息，然后通过这些信息来判断请求是否是真正的客户发送的。当然这些信息不应该存在cookie中</strong></li>
+</ul>
 <h2 id="信息安全设计思路："><a class="header-anchor" href="#信息安全设计思路："></a>信息安全设计思路：</h2>
 <ul>
 <li>系统设计要有适度安全冗余，冗余是指关键功能的安全保障要多层。</li>
