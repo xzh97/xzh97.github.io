@@ -18,7 +18,7 @@
     <meta name="keywords" content="xzh,博客">
 
 
-<title>组件设计思考-CustomTransfer | 追梦的蚂蚁</title>
+<title>component-design-custom-transfer | 追梦的蚂蚁</title>
 
 
 
@@ -40,7 +40,7 @@
     
     <script src="/js/tocbot.min.js"></script>
     
-    <script src="/js/gitalk.1.5.2.min.js"></script>
+    <script src="/js/gitalk-1.6.2.min.js"></script>
     
 
 
@@ -183,7 +183,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">组件设计思考-CustomTransfer</h1>
+            <h1 class="post-title">component-design-custom-transfer</h1>
             
                 <div class="post-meta">
                     
@@ -196,13 +196,6 @@
                         </span>
                     
                     
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-                            
-                        </span>
-                    
                 </div>
             
         </header>
@@ -210,15 +203,13 @@
         <div class="post-content">
             <h2 id="组件设计"><a class="header-anchor" href="#组件设计"></a>组件设计</h2>
 <h3 id="前言"><a class="header-anchor" href="#前言"></a>前言</h3>
-<p>本来之前部门那边有这样类似的框，我还以为这个组件是通用组件，结果发现并不是。而且选择部门那块代码业务代码实在太多。所以此次需求里，我准备写个通用组件。</p>
+<p>本来之前部门那边有这样类似的框，我还以为这个组件是通用组件，结果发现并不是。而且选择部门那块业务相关代码实在太多。所以此次需求里，我准备写个通用的</p>
 <h3 id="设计"><a class="header-anchor" href="#设计"></a>设计</h3>
-<h4 id="设计图"><a class="header-anchor" href="#设计图"></a>设计图</h4>
+<h4 id="成品图"><a class="header-anchor" href="#成品图"></a>成品图</h4>
 <p><img src="http://122.51.73.210:3000/upload/2020-07-22/202007224899.jpg" alt="image"></p>
-<h4 id="数据格式"><a class="header-anchor" href="#数据格式"></a>数据格式</h4>
-<p>把外部传入数据转换成组件内部的通用格式</p>
 <h3 id="组件实例之CustomTransfer组件设计"><a class="header-anchor" href="#组件实例之CustomTransfer组件设计"></a>组件实例之CustomTransfer组件设计</h3>
 <h4 id="设计思路"><a class="header-anchor" href="#设计思路"></a>设计思路</h4>
-<h5 id="布局"><a class="header-anchor" href="#布局"></a>布局</h5>
+<h5 id="内容布局"><a class="header-anchor" href="#内容布局"></a>内容布局</h5>
 <p><img src="http://122.51.73.210:3000/upload/2020-07-22/20200722319.png" alt="image"></p>
 <h5 id="数据处理"><a class="header-anchor" href="#数据处理"></a>数据处理</h5>
 <ul>
@@ -251,13 +242,18 @@
 <h3 id="优点"><a class="header-anchor" href="#优点"></a>优点</h3>
 <ul>
 <li>布局清晰，各模块功能思路清楚，可读性好。</li>
-<li>在外部加载数据传入组件内，由于组件在外部可能并发使用较多，为了避免同时调用此接口</li>
+<li>在外部加载数据传入组件内，由于组件在外部可能并发使用较多，所以为了避免同时调用此接口，建议在外部传入<code>dataSource</code>。</li>
 </ul>
 <h3 id="不足"><a class="header-anchor" href="#不足"></a>不足</h3>
 <ul>
 <li>传入的<code>typeCheck</code>和<code>isError</code>属性，这里并不符合我的预期。因为这里是业务的需求，而不是组件本身的需求。但由于外部页面布局未使用<code>FormItem</code>包裹，不好做处理保存的报错提示处理。</li>
-<li>暂时没有对外暴露出<code>onSearch</code>，因为业务上需求是在查询后默认展开所有树节点</li>
-<li>组件设计仍然待改进</li>
+<li>组件设计也许可以更好</li>
+</ul>
+<h3 id="思考"><a class="header-anchor" href="#思考"></a>思考</h3>
+<ul>
+<li>对组件做一个大致的布局，可以清晰的知道有哪些交互需要实现。</li>
+<li>对传入的数据作适配处理，这里也是暂时有点困惑我的地方，因为不同接口数据格式可能不同，目前设计中，是在外部传入<code>valueKey</code>，<code>labelKey</code>，<code>childKey</code>来判断。这里可以思考下是否有更好的处理方式</li>
+<li>在加入业务需求处理时，这里更好的处理方式是写一个新的业务组件，然后把<code>customTransfer</code>作为一个子组件加进去，其它地方加入业务处理。 而不应该直接加进来。</li>
 </ul>
 
         </div>
@@ -296,14 +292,6 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
-                    
-                        <a href="/tags/%E7%BB%84%E4%BB%B6/"># 组件</a>
-                    
-                        <a href="/tags/react/"># react</a>
-                    
-                        <a href="/tags/javascript/"># javascript</a>
-                    
-                        
                 </span>
             </div>
             <div>
@@ -314,7 +302,7 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/08/01/http-protocol/">HTTP协议学习（一）</a>
+                <a class="prev" rel="prev" href="/2020/08/01/http-protocol/">http-protocol</a>
             
             
             <a class="next" rel="next" href="/2020/05/12/vue-reactivty/">Vue源码学习（一）：响应式-1</a>
