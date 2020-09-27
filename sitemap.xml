@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xzh97.github.io/2019/12/15/offline-storage/</loc>
+    
+    <lastmod>2020-09-27T14:33:53.849Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xzh97.github.io/2020/08/01/http-protocol/</loc>
     
     <lastmod>2020-09-27T14:25:37.637Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://xzh97.github.io/2019/12/18/hexo-add-gitalk/</loc>
     
     <lastmod>2020-08-24T14:21:12.131Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xzh97.github.io/2019/12/15/offline-storage/</loc>
-    
-    <lastmod>2020-07-22T14:52:24.500Z</lastmod>
     
   </url>
   
