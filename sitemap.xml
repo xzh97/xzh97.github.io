@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xzh97.github.io/2020/11/20/learn-webpack/</loc>
+    
+    <lastmod>2020-11-30T07:48:23.823Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xzh97.github.io/2019/12/15/offline-storage/</loc>
     
     <lastmod>2020-09-27T14:33:53.849Z</lastmod>
@@ -61,13 +68,6 @@
     <loc>https://xzh97.github.io/2020/05/12/vue-reactivty/</loc>
     
     <lastmod>2020-07-22T14:48:11.116Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xzh97.github.io/2020/02/10/learn-webpack/</loc>
-    
-    <lastmod>2020-03-22T15:00:00.000Z</lastmod>
     
   </url>
   

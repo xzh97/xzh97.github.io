@@ -18,7 +18,7 @@
     <meta name="keywords" content="xzh,博客">
 
 
-<title>Webpack学习笔记（一） | 追梦的蚂蚁</title>
+<title>【Webpack】基础配置 | 追梦的蚂蚁</title>
 
 
 
@@ -185,7 +185,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Webpack学习笔记（一）</h1>
+            <h1 class="post-title">【Webpack】基础配置</h1>
             
                 <div class="post-meta">
                     
@@ -194,7 +194,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">February 10, 2020&nbsp;&nbsp;11:51:23</a>
+                        Date: <a href="#">November 20, 2020&nbsp;&nbsp;11:51:23</a>
                         </span>
                     
                     
@@ -212,6 +212,7 @@
         <div class="post-content">
             <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
 <p>馋<code>webpack</code>已经很久了，今天就来学学吧。😜。</p>
+<p>（第一版其实是2月份的文章了，但是最近这个月决定重新学webpack，所以决定把日期改成最近的时间了。）</p>
 <h2 id="概念"><a class="header-anchor" href="#概念"></a>概念</h2>
 <p>Webpack是一个前端资源加载/打包工具，也是前端工程化的体现。</p>
 <h2 id="Webpack基础配置"><a class="header-anchor" href="#Webpack基础配置"></a>Webpack基础配置</h2>
@@ -293,6 +294,23 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; commons和split的对比</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; commons-chunk-plugin</span><br><span class="line">chunk-a: react, react-dom, a-comp</span><br><span class="line">chunk-b: react, react-dom, b-comp</span><br><span class="line">&#x2F;&#x2F; 会出现重复代码</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; split-chunk-plugin</span><br><span class="line">chunk-a ~ chunk-b : react, react-dom,</span><br><span class="line">chunk-a: a-comp</span><br><span class="line">chunk-b: b-comp</span><br><span class="line">&#x2F;&#x2F; 不会出现重复代码</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h3 id="resolve"><a class="header-anchor" href="#resolve"></a>resolve</h3>
+<p><code>resolve</code>的作用是设置模块怎么被解析，数据结构是<code>Object</code>。接下来列举一些比较常用的属性。</p>
+<h4 id="alias"><a class="header-anchor" href="#alias"></a>alias</h4>
+<p><code>alias</code>作用是设置别名，可以使得引入模块变得更加简单。举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置</span></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    resolve:&#123;</span><br><span class="line">        alias:&#123;</span><br><span class="line">            <span class="comment">// path.resolve来确定引入路径不会出问题</span></span><br><span class="line">            <span class="string">"@"</span>: path.resolve(__dirname, <span class="string">'./src'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入模块时</span></span><br><span class="line"><span class="keyword">import</span> HomeView <span class="keyword">from</span> <span class="string">'@/views/home/index.vue'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="extensions"><a class="header-anchor" href="#extensions"></a>extensions</h4>
+<p><code>extensions</code>作用是自动扩展，可以自动解析确定的扩展。举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置</span></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    resolve:&#123;</span><br><span class="line">        <span class="comment">// 默认选项是.js .json</span></span><br><span class="line">        extensions: [<span class="string">'.js'</span>, <span class="string">'json'</span>, <span class="string">'.vue'</span>],</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入模块时可以不指定扩展（也就是文件后缀名）</span></span><br><span class="line"><span class="keyword">import</span> HomeView <span class="keyword">from</span> <span class="string">'@/views/home/index'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="modules"><a class="header-anchor" href="#modules"></a>modules</h4>
+<p><code>modules</code>作用是告诉webpack解析时应该搜索的目录。举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置</span></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    resolve:&#123;</span><br><span class="line">        <span class="comment">// 意思是webpack搜索目录优先找src目录下的，没有再从node_modules找</span></span><br><span class="line">        modules: [path.resolve(__dirname, <span class="string">'./src/'</span>), <span class="string">'node_modules'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 此时也可以不写前面的 '@/'，和alias有异曲同工之妙</span></span><br><span class="line"><span class="keyword">import</span> HomeView <span class="keyword">from</span> <span class="string">'views/home/index.vue'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="devServer"><a class="header-anchor" href="#devServer"></a>devServer</h3>
+<p><code>devServer</code>是开发中用来启动本地服务，方便开发。下面举个栗子来说明各属性作用😂</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置</span></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        open: <span class="literal">false</span>, <span class="comment">// 是否自动打开浏览器</span></span><br><span class="line">        port: <span class="number">8080</span>, <span class="comment">// 本地服务启用端口</span></span><br><span class="line">        <span class="comment">// webpack中有一个hotModuleReplacementPlugin, hot选项其实就可以当作是否启用了这个插件。</span></span><br><span class="line">        hot: <span class="literal">true</span>, <span class="comment">// 是否启用热更新</span></span><br><span class="line">        compress: <span class="literal">true</span>, <span class="comment">// 是否启用gzip压缩</span></span><br><span class="line">        https: <span class="literal">true</span>, <span class="comment">// 是否启用https</span></span><br><span class="line">        <span class="comment">// 是否开启代理</span></span><br><span class="line">        proxy: &#123;</span><br><span class="line">            <span class="string">'/api'</span>: &#123;</span><br><span class="line">                target: <span class="string">'localhost:3000/'</span>, <span class="comment">// 对应自己的后端接口</span></span><br><span class="line">                changeOrigin: <span class="literal">true</span>, <span class="comment">// 请求头中显示target</span></span><br><span class="line">                ws: <span class="literal">true</span>, <span class="comment">// 是否代理websocket</span></span><br><span class="line">                pathRewrite: &#123;</span><br><span class="line">                  <span class="string">'^/api'</span>: <span class="string">''</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 是否指定静态文件目录，</span></span><br><span class="line">        contentBase: path.join(__dirname, <span class="string">"public"</span>), </span><br><span class="line">        publicPath: <span class="string">'/'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="externals"><a class="header-anchor" href="#externals"></a>externals</h3>
+<p>按照<code>webpack</code>官网里的解释，如果我们想引用一个库，但是又不想把<code>webpack</code>把它打进包里且我们希望可以正常引用这个库。这个时候就可以使用<code>externals</code>配置。例如官网中的栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.html</span></span><br><span class="line">&lt;script</span><br><span class="line">  src=<span class="string">"https://code.jquery.com/jquery-3.1.0.js"</span></span><br><span class="line">  integrity=<span class="string">"sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="</span></span><br><span class="line">  crossorigin=<span class="string">"anonymous"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/webpack.config.js</span></span><br><span class="line"><span class="regexp">const config = &#123;</span></span><br><span class="line"><span class="regexp">    externals: &#123;</span></span><br><span class="line"><span class="regexp">        jquery: jQuery</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 引用</span></span><br><span class="line"><span class="regexp">import $ from 'jquery';</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">$('.my-element').animate(...);</span></span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
 <p>其实看了这些配置，基础的webpack配置已经没有啥大问题了。还有一些比较小的点就没写了，之后有疑问也可以去<a href="https://www.webpackjs.com/concepts/" target="_blank" rel="noopener">webpack中文网</a>查看对应部分配置。</p>
 
@@ -309,7 +327,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://xzh97.github.io/2020/02/10/learn-webpack/">https://xzh97.github.io/2020/02/10/learn-webpack/</a></span>
+                        <span><a href="https://xzh97.github.io/2020/11/20/learn-webpack/">https://xzh97.github.io/2020/11/20/learn-webpack/</a></span>
                     </p>
                 
                 
@@ -346,10 +364,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/05/12/vue-reactivty/">Vue源码学习（一）：响应式-1</a>
             
-            
-            <a class="next" rel="next" href="/2020/01/15/url-parse/">从输入URL到页面展示的过程</a>
+            <a class="next" rel="next" href="/2020/08/23/information-safe/">信息安全学习</a>
             
         </section>
 
