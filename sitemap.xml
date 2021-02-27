@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xzh97.github.io/2021/02/27/webpack-principle/</loc>
+    
+    <lastmod>2021-02-27T04:26:42.834Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xzh97.github.io/2020/12/03/learn-webpack-optimization/</loc>
     
     <lastmod>2021-02-23T15:29:39.982Z</lastmod>

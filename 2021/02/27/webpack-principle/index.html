@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xzh">
+
+
+    <meta name="subtitle" content="何须仰望他人，自己亦是风景">
+
+
+    <meta name="description" content="xzh的个人博客">
+
+
+    <meta name="keywords" content="xzh,博客">
+
+
+<title>webpack-principle | 追梦的蚂蚁</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="追梦的蚂蚁" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xzh97&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xzh97&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">webpack-principle</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">xzh</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 27, 2021&nbsp;&nbsp;12:24:41</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
+<p>最近通过对webpack的学习，较为深刻的学习了webpack的基础配置以及项目优化的方法。今天主要内容是记录一下自己对webpack的源码的学习。</p>
+<h2 id="探究"><a class="header-anchor" href="#探究"></a>探究</h2>
+<h3 id="webpack周期"><a class="header-anchor" href="#webpack周期"></a>webpack周期</h3>
+<p>首先我们要了解一下webpack的编译构建流程所用到的钩子函数调用顺序：</p>
+<ul>
+<li>entry-option,初始化option</li>
+<li>run,开始编译</li>
+<li>make,从entry开始递归的分析依赖，对每个依赖模块进行build</li>
+<li>before-resolve,对模块位置进行解析</li>
+<li>build-module，开始构建某个模块</li>
+<li>normal-module-loader，将loader加载完成的module进行编译，生成ast树</li>
+<li>program，遍历AST,当遇到require等一些调用表达式时，收集依赖</li>
+<li>seal,所有依赖build完成，开始优化</li>
+<li>emit，输出到dist目录</li>
+</ul>
+<h3 id="webpack入口"><a class="header-anchor" href="#webpack入口"></a>webpack入口</h3>
+<p>webpack本身也只是一个构造函数。我们可以从<code>webpack/lib/webpack.js</code>看到。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="function">(<span class="params">options, callback</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 校验webpack.config.js传入的配置</span></span><br><span class="line">	<span class="keyword">const</span> webpackOptionsValidationErrors = validateSchema(</span><br><span class="line">		webpackOptionsSchema,</span><br><span class="line">		options</span><br><span class="line">	);</span><br><span class="line">	<span class="keyword">if</span> (webpackOptionsValidationErrors.length) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> WebpackOptionsValidationError(webpackOptionsValidationErrors);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">	<span class="keyword">let</span> compiler;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(options)) &#123;</span><br><span class="line">		compiler = <span class="keyword">new</span> MultiCompiler(</span><br><span class="line">			<span class="built_in">Array</span>.from(options).map(<span class="function"><span class="params">options</span> =&gt;</span> webpack(options))</span><br><span class="line">		);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> options === <span class="string">"object"</span>) &#123;</span><br><span class="line">	</span><br><span class="line">	    <span class="comment">// 合并传入配置和默认配置</span></span><br><span class="line">		options = <span class="keyword">new</span> WebpackOptionsDefaulter().process(options);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// </span></span><br><span class="line">		compiler = <span class="keyword">new</span> Compiler(options.context);</span><br><span class="line">		compiler.options = options;</span><br><span class="line">		<span class="keyword">new</span> NodeEnvironmentPlugin(&#123;</span><br><span class="line">			infrastructureLogging: options.infrastructureLogging</span><br><span class="line">		&#125;).apply(compiler);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 注册配置的插件</span></span><br><span class="line">		<span class="keyword">if</span> (options.plugins &amp;&amp; <span class="built_in">Array</span>.isArray(options.plugins)) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">const</span> plugin <span class="keyword">of</span> options.plugins) &#123;</span><br><span class="line">				<span class="keyword">if</span> (<span class="keyword">typeof</span> plugin === <span class="string">"function"</span>) &#123;</span><br><span class="line">					plugin.call(compiler, compiler);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					plugin.apply(compiler);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 触发environment，afterEnvironment两个钩子函数，</span></span><br><span class="line">		compiler.hooks.environment.call();</span><br><span class="line">		compiler.hooks.afterEnvironment.call();</span><br><span class="line">		compiler.options = <span class="keyword">new</span> WebpackOptionsApply().process(options, compiler);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Invalid argument: options"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (callback) &#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">"function"</span>) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Invalid argument: callback"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 判断是否启用监视模式</span></span><br><span class="line">		<span class="keyword">if</span> (</span><br><span class="line">			options.watch === <span class="literal">true</span> ||</span><br><span class="line">			(<span class="built_in">Array</span>.isArray(options) &amp;&amp; options.some(<span class="function"><span class="params">o</span> =&gt;</span> o.watch))</span><br><span class="line">		) &#123;</span><br><span class="line">			<span class="keyword">const</span> watchOptions = <span class="built_in">Array</span>.isArray(options)</span><br><span class="line">				? options.map(<span class="function"><span class="params">o</span> =&gt;</span> o.watchOptions || &#123;&#125;)</span><br><span class="line">				: options.watchOptions || &#123;&#125;;</span><br><span class="line">			<span class="keyword">return</span> compiler.watch(watchOptions, callback);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 这里才开始构建应用</span></span><br><span class="line">		compiler.run(callback);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> compiler;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>从上面可以看出，webpack其实就是一个方法。它声明并返回了一个Compiler的实例对象。那么，Compiler是个什么东西呢？ 我们看一下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Compiler</span> <span class="keyword">extends</span> <span class="title">Tapable</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 里面内容暂时先不看</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出，Compiler是继承了Tapable。那么接下来，我们来说一下Tapable是什么。</p>
+<h3 id="Tapable"><a class="header-anchor" href="#Tapable"></a>Tapable</h3>
+<p>Tapable，我个人觉得它其实是一个事件注册机😂。</p>
+<p>它的作用是为插件提供钩子类函数。主要是以下几种类型：</p>
+<ul>
+<li>普通型（钩子类名没有bail，waterfall，loop）：这种钩子会按照tap注册的顺序依次执行</li>
+<li>瀑布型（waterfall）： 这种钩子和普通钩子不同的地方在于：如果上一个tap有返回值。它会把这个返回值当成参数传入下一个tap函数。</li>
+<li>熔断型（bail）：如果tap返回除null之外的值，会提前退出且停止执行其他的函数。</li>
+<li>循环型（loop）：<s>如果tap返回一个未定义的值时，tap会从第一个插件重新启动且循环该过程直到所有插件返回未定义的值才跳出循环。</s></li>
+</ul>
+<h4 id="栗子"><a class="header-anchor" href="#栗子"></a>栗子</h4>
+<p>tapable提供了许多不同的钩子类，我们可以为插件创建不同类型的钩子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;</span><br><span class="line">	SyncHook,</span><br><span class="line">	SyncBailHook,</span><br><span class="line">	SyncWaterfallHook,</span><br><span class="line">	SyncLoopHook,</span><br><span class="line">	AsyncParallelHook,</span><br><span class="line">	AsyncParallelBailHook,</span><br><span class="line">	AsyncSeriesHook,</span><br><span class="line">	AsyncSeriesBailHook,</span><br><span class="line">	AsyncSeriesWaterfallHook</span><br><span class="line"> &#125; = <span class="built_in">require</span>(<span class="string">"tapable"</span>);</span><br></pre></td></tr></table></figure>
+<p>所有的钩子构建函数都接受一个可选的参数（最好是接收一个字符串类型的参数名数组，例如<code>['a', 'b', 'c']</code>）</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> hook = <span class="keyword">new</span> SyncHook([<span class="string">"arg1"</span>, <span class="string">"arg2"</span>, <span class="string">"arg3"</span>]);</span><br></pre></td></tr></table></figure>
+<p>最好的练习是把所有的钩子暴露在一个类中的hooks属性当中：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>() &#123;</span><br><span class="line">		<span class="keyword">this</span>.hooks = &#123;</span><br><span class="line">			accelerate: <span class="keyword">new</span> SyncHook([<span class="string">"newSpeed"</span>]),</span><br><span class="line">			brake: <span class="keyword">new</span> SyncHook(),</span><br><span class="line">			calculateRoutes: <span class="keyword">new</span> AsyncParallelHook([<span class="string">"source"</span>, <span class="string">"target"</span>, <span class="string">"routesList"</span>])</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* ... */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在其他人可以这样使用这些钩子</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myCar = <span class="keyword">new</span> Car();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用tap方法添加一个消费者</span></span><br><span class="line">myCar.hooks.brake.tap(<span class="string">"WarningLampPlugin"</span>, () =&gt; warningLamp.on());</span><br></pre></td></tr></table></figure>
+<p>这里你必须传一个name去标记这个插件。</p>
+<p>你可以接收参数：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">myCar.hooks.accelerate.tap(<span class="string">"LoggerPlugin"</span>, newSpeed =&gt; <span class="built_in">console</span>.log(<span class="string">`Accelerating to <span class="subst">$&#123;newSpeed&#125;</span>`</span>));</span><br></pre></td></tr></table></figure>
+<p>对于同步钩子而言，tap方法是添加插件时唯一合法的方法，异步钩子通常支持异步插件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 绑定promise钩子</span></span><br><span class="line">myCar.hooks.calculateRoutes.tapPromise(<span class="string">"GoogleMapsPlugin"</span>, (source, target, routesList) =&gt; &#123;</span><br><span class="line">	<span class="comment">// return a promise</span></span><br><span class="line">	<span class="keyword">return</span> google.maps.findRoute(source, target).then(<span class="function"><span class="params">route</span> =&gt;</span> &#123;</span><br><span class="line">		routesList.add(route);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 绑定异步钩子</span></span><br><span class="line">myCar.hooks.calculateRoutes.tapAsync(<span class="string">"BingMapsPlugin"</span>, (source, target, routesList, callback) =&gt; &#123;</span><br><span class="line">	bing.findRoute(source, target, (err, route) =&gt; &#123;</span><br><span class="line">		<span class="keyword">if</span>(err) <span class="keyword">return</span> callback(err);</span><br><span class="line">		routesList.add(route);</span><br><span class="line">		<span class="comment">// call the callback</span></span><br><span class="line">		callback();</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//绑定同步钩子</span></span><br><span class="line">myCar.hooks.calculateRoutes.tap(<span class="string">"CachedRoutesPlugin"</span>, (source, target, routesList) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> cachedRoute = cache.get(source, target);</span><br><span class="line">	<span class="keyword">if</span>(cachedRoute)</span><br><span class="line">		routesList.add(cachedRoute);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>类需要调用被声明的那些钩子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* ... */</span></span><br><span class="line"></span><br><span class="line">    setSpeed(newSpeed) &#123;    </span><br><span class="line">        <span class="comment">// call(xx) 传参调用同步钩子的API</span></span><br><span class="line">        <span class="keyword">this</span>.hooks.accelerate.call(newSpeed);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    useNavigationSystemPromise(source, target) &#123;</span><br><span class="line">        <span class="keyword">const</span> routesList = <span class="keyword">new</span> List();</span><br><span class="line">        <span class="comment">// 调用promise钩子(钩子返回一个promise)的API</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.hooks.calculateRoutes.promise(source, target, routesList).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> routesList.getRoutes();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    useNavigationSystemAsync(source, target, callback) &#123;</span><br><span class="line">        <span class="keyword">const</span> routesList = <span class="keyword">new</span> List();</span><br><span class="line">        <span class="comment">// 调用异步钩子API</span></span><br><span class="line">        <span class="keyword">this</span>.hooks.calculateRoutes.callAsync(source, target, routesList, err =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span>(err) <span class="keyword">return</span> callback(err);</span><br><span class="line">            callback(<span class="literal">null</span>, routesList.getRoutes());</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实这个例子是官方文档举的，我就是翻译了一下。通过这个栗子我们可以知道怎么使用tapable来写一个插件。还有一些tapable的内容，我就没继续写了。毕竟我们的主要目的还是搞清webpack的运行过程。</p>
+<h3 id="构建与编译"><a class="header-anchor" href="#构建与编译"></a>构建与编译</h3>
+<p>上面刚才说到了，构建应用的开始是这么一段代码：<code>compiler.run(callback)</code>。现在我们来看下run方法内部是什么样子的。 <code>run</code>方法位于<code>lib/Compiler.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 内部很多代码对我们没有帮助，省略掉</span></span><br><span class="line">run(callback) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> run = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">this</span>.hooks.beforeRun.callAsync(<span class="keyword">this</span>, err =&gt; &#123;</span><br><span class="line">			<span class="keyword">if</span> (err) <span class="keyword">return</span> finalCallback(err);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">this</span>.hooks.run.callAsync(<span class="keyword">this</span>, err =&gt; &#123;</span><br><span class="line">				<span class="keyword">if</span> (err) <span class="keyword">return</span> finalCallback(err);</span><br><span class="line"></span><br><span class="line">				<span class="keyword">this</span>.readRecords(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">					<span class="keyword">if</span> (err) <span class="keyword">return</span> finalCallback(err);</span><br><span class="line">                    <span class="comment">// 开始编译项目</span></span><br><span class="line">					<span class="keyword">this</span>.compile(onCompiled);</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出，run方法内就是触发了  <code>beforeRun</code>和<code>run</code>两个钩子，然后到<code>this.compile(onCompiled)</code>之后才开始真正编译整个项目。</p>
+<p>接下来看一下compile方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">compile(callback) &#123;</span><br><span class="line">		<span class="keyword">const</span> params = <span class="keyword">this</span>.newCompilationParams();</span><br><span class="line">		<span class="keyword">this</span>.hooks.beforeCompile.callAsync(params, err =&gt; &#123;</span><br><span class="line">			<span class="keyword">if</span> (err) <span class="keyword">return</span> callback(err);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">this</span>.hooks.compile.call(params);</span><br><span class="line">            <span class="comment">// 创建compilation</span></span><br><span class="line">			<span class="keyword">const</span> compilation = <span class="keyword">this</span>.newCompilation(params);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">const</span> logger = compilation.getLogger(<span class="string">"webpack.Compiler"</span>);</span><br><span class="line"></span><br><span class="line">			logger.time(<span class="string">"make hook"</span>);</span><br><span class="line">			<span class="keyword">this</span>.hooks.make.callAsync(compilation, err =&gt; &#123;</span><br><span class="line">				logger.timeEnd(<span class="string">"make hook"</span>);</span><br><span class="line">				<span class="keyword">if</span> (err) <span class="keyword">return</span> callback(err);</span><br><span class="line"></span><br><span class="line">				logger.time(<span class="string">"finish make hook"</span>);</span><br><span class="line">				<span class="keyword">this</span>.hooks.finishMake.callAsync(compilation, err =&gt; &#123;</span><br><span class="line">					logger.timeEnd(<span class="string">"finish make hook"</span>);</span><br><span class="line">					<span class="keyword">if</span> (err) <span class="keyword">return</span> callback(err);</span><br><span class="line"></span><br><span class="line">					process.nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">						logger.time(<span class="string">"finish compilation"</span>);</span><br><span class="line">						compilation.finish(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">							logger.timeEnd(<span class="string">"finish compilation"</span>);</span><br><span class="line">							<span class="keyword">if</span> (err) <span class="keyword">return</span> callback(err);</span><br><span class="line"></span><br><span class="line">							logger.time(<span class="string">"seal compilation"</span>);</span><br><span class="line">							compilation.seal(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">								logger.timeEnd(<span class="string">"seal compilation"</span>);</span><br><span class="line">								<span class="keyword">if</span> (err) <span class="keyword">return</span> callback(err);</span><br><span class="line"></span><br><span class="line">								logger.time(<span class="string">"afterCompile hook"</span>);</span><br><span class="line">								<span class="keyword">this</span>.hooks.afterCompile.callAsync(compilation, err =&gt; &#123;</span><br><span class="line">									logger.timeEnd(<span class="string">"afterCompile hook"</span>);</span><br><span class="line">									<span class="keyword">if</span> (err) <span class="keyword">return</span> callback(err);</span><br><span class="line"></span><br><span class="line">									<span class="keyword">return</span> callback(<span class="literal">null</span>, compilation);</span><br><span class="line">								&#125;);</span><br><span class="line">							&#125;);</span><br><span class="line">						&#125;);</span><br><span class="line">					&#125;);</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>compile方法内部主要就是创建了一个 Compilation 对象，然后触发make的钩子。</p>
+<p>对于Compilation而言，它的实例能够访问所有的模块和它们的依赖（大部分是循环依赖）。它会对应用程序的依赖图中所有模块进行字面上的编译(literal compilation)。在编译阶段，模块会被加载(loaded)、封存(sealed)、优化(optimized)、分块(chunked)、哈希(hashed)和重新创建(restored)。</p>
+<p>而make阶段的话，主要是根据配置中的entry去找到入口文件，然后根据入口文件递归出所有依赖。形成一个依赖关系树。然后将递归到的所有模块交给对应的loader进行处理。</p>
+<p>如果我们想看一下make阶段如何处理的。那么首先，我们得找到make这个钩子的注册的地方。这里，我们可以通过全局查找make.tap（绑定方法的地方），最终我们能在<code>EntryPlugin.js</code>找到它。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">apply(compiler) &#123;</span><br><span class="line">	compiler.hooks.compilation.tap(</span><br><span class="line">		<span class="string">"EntryPlugin"</span>,</span><br><span class="line">		(compilation, &#123; normalModuleFactory &#125;) =&gt; &#123;</span><br><span class="line">			compilation.dependencyFactories.set(</span><br><span class="line">				EntryDependency,</span><br><span class="line">				normalModuleFactory</span><br><span class="line">			);</span><br><span class="line">		&#125;</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">	compiler.hooks.make.tapAsync(<span class="string">"EntryPlugin"</span>, (compilation, callback) =&gt; &#123;</span><br><span class="line">		<span class="keyword">const</span> &#123; entry, options, context &#125; = <span class="keyword">this</span>;</span><br><span class="line">		<span class="keyword">const</span> dep = EntryPlugin.createDependency(entry, options);</span><br><span class="line">		compilation.addEntry(context, dep, options, err =&gt; &#123;</span><br><span class="line">			callback(err);</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>到这里，对于webpack的运行机制差不多就了解了。当然如果你对webpack内如何处理我们的项目文件的话也可以继续往下探究。但对于这篇文章而言，就没必要了。</p>
+<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
+<p>通过对webpack的源码解读，可以大致总结webpack工作的流程：</p>
+<ul>
+<li>调用webpack方法，处理传入的配置进行并创建Compiler对象。</li>
+<li>创建compilation对象,并调用compile方法开始对项目进行编译。</li>
+<li>调用addEntry方法以配置文件中的entry属性指向文件为起点，开始递归形成依赖关系树。</li>
+<li>递归依赖树，将依赖交给loader处理。</li>
+<li>合并loader处理过的结果，输出打包结果。</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xzh</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://xzh97.github.io/2021/02/27/webpack-principle/">https://xzh97.github.io/2021/02/27/webpack-principle/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>最是人间孤愤难平，直消得几回潮落又潮生！</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/webpack/"># webpack</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/12/03/learn-webpack-optimization/">【Webpack】项目优化</a>
+            
+        </section>
+
+        
+        
+        <script type="text/javascript" async>
+    let gitalkContainer = document.createElement('div')
+    let postWrap = document.querySelector('.post-wrap');
+    gitalkContainer.id = 'gitalk-container'
+    postWrap.appendChild(gitalkContainer);
+    let params = {
+    clientID: '73f1c80bba01cb73e53d',
+    clientSecret: 'fb38d78684a17e97a441a4cd0db47dc642423678',
+    repo: 'xzh97.github.io',
+    admin: ['xzh97'],
+    id: window.location.pathname,
+    owner: 'xzh97',
+    distractionFreeMode: false,
+    }
+    let gitalk = new Gitalk(params)
+    gitalk.render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xzh | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
