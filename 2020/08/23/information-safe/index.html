@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xzh">
+
+
+    <meta name="subtitle" content="何须仰望他人，自己亦是风景">
+
+
+    <meta name="description" content="xzh的个人博客">
+
+
+    <meta name="keywords" content="xzh,博客">
+
+
+<title>信息安全学习 | 追梦的蚂蚁</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="追梦的蚂蚁" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xzh97&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xzh97&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">信息安全学习</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">xzh</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 23, 2020&nbsp;&nbsp;17:59:27</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
+<p>昨天我们团队的<strong>安全大佬</strong>给我们开展了一个安全培训，怕自己之后很容易会忘掉。所以写篇文章来记录一些常见的安全问题以及应对策略。同时也方便自己随时阅读，加深对于信息安全的理解</p>
+<h2 id="常见的安全问题"><a class="header-anchor" href="#常见的安全问题"></a>常见的安全问题</h2>
+<h3 id="sql-Injection（sql注入）"><a class="header-anchor" href="#sql-Injection（sql注入）"></a>sql Injection（sql注入）</h3>
+<p>sql注入的<strong>核心原理</strong>是因为没有对用户输入的内容做<strong>验证</strong>和<strong>净化</strong>处理。攻击者在输入的内容里构造恶意sql语句然后提交给服务端执行（好难举例，我在我自己的项目里没构造出来）</p>
+<h4 id="减轻或者弱化sql注入的方式："><a class="header-anchor" href="#减轻或者弱化sql注入的方式："></a>减轻或者弱化sql注入的方式：</h4>
+<ul>
+<li>对用户提交的数据进行内容转义/内容验证</li>
+<li>白名单机制</li>
+<li>使用预编译语句，参数化查询的方式（这里我之前写博客后端服务的时候，有看别人这么写但不是很清楚其中缘由。这次有点恍然大明白的感jio）</li>
+<li>从策略上来说，最直接有效的方式就是<strong>充钱</strong>买支持防御注入攻击的WAF（应用程序防火墙），你懂的，<strong>充钱能使你更强</strong></li>
+</ul>
+<p>其中呢，前端能做的就是对输入的数据做一些校验（其实也没啥太大用处，因为用户的输入是随心所欲的，总会有漏洞可以绕过验证）。<strong>根源上的解决方法还得是预编译语句和参数化的查询</strong>，它的大体过程是sql服务器先执行sql存到缓存池里，然后把输入的数据当作<strong>参数变量</strong>传进来。而sql服务器不会把参数变量里的值当成sql语句的一部分，从而防止注入。</p>
+<h3 id="Broken-Authentication（中断身份认证）"><a class="header-anchor" href="#Broken-Authentication（中断身份认证）"></a>Broken Authentication（中断身份认证）</h3>
+<h4 id="常见问题："><a class="header-anchor" href="#常见问题："></a>常见问题：</h4>
+<ul>
+<li>弱口令
+<ul>
+<li>口令长度是否大于8</li>
+<li>口令是否包含特殊字符，大写字母，小写字母，数字的三类</li>
+</ul>
+</li>
+<li>密码泄露</li>
+<li>密码爆破</li>
+<li>明文密码<br>
+<img src="http://qfi1chz6p.hn-bkt.clouddn.com/broken_authentication.png" alt="image"></li>
+</ul>
+<p>解释一下Session覆盖。session或cookie的覆盖(它被用作修改指定用户的密码,可能就是用户名),而服务器端只是简单判断了一下修改链接的key是否存在就可以修改密码了,而没有判断key是否对应指定用户名。举个例子：先向自己邮箱A发一封找回密码，再向用户B的邮箱发一封，当前浏览器记录用户B的账户信息，然后去自己的邮箱A点击找回密码链接，读取了存在浏览器用户B的账户信息，成功修改了密码</p>
+<h4 id="主要对策："><a class="header-anchor" href="#主要对策："></a>主要对策：</h4>
+<ul>
+<li>使用安全的认证框架</li>
+<li>正确加密</li>
+<li>禁用弱口令</li>
+</ul>
+<h3 id="Sensitive-Data-Exposure-（敏感信息泄露）"><a class="header-anchor" href="#Sensitive-Data-Exposure-（敏感信息泄露）"></a>Sensitive Data Exposure （敏感信息泄露）</h3>
+<p>这个问题常见于http传输中，因为http协议是一个明文传输的协议。</p>
+<h4 id="敏感信息定义"><a class="header-anchor" href="#敏感信息定义"></a>敏感信息定义</h4>
+<ul>
+<li>业务流程的敏感信息（肯定不止这些，这里只列出一些比较常见的信息）
+<ul>
+<li>token</li>
+<li>session</li>
+<li>cookie</li>
+<li>password</li>
+</ul>
+</li>
+<li>用户/客户标识信息
+<ul>
+<li>电话号码</li>
+<li>身份证号码</li>
+<li>职位</li>
+<li>客户的资产信息（潜在客户，合同信息等）</li>
+<li>生物特征信息（指纹，虹膜等）</li>
+</ul>
+</li>
+</ul>
+<h4 id="保护敏感信息的对策"><a class="header-anchor" href="#保护敏感信息的对策"></a>保护敏感信息的对策</h4>
+<p>敏感信息的保护通常需要贯穿整个业务流程</p>
+<ul>
+<li>在infra层要采用符合标准的TLS版本，（大于等于1.2），并且有选择的禁用密码套件</li>
+<li>采购可信CA的证书，并且定期更新</li>
+<li>对服务器里的用户信息进行脱敏</li>
+<li>使用安全的对称/非对称加密算法</li>
+<li>采用POST方法提交敏感数据</li>
+</ul>
+<h3 id="XML-External-Entities-XXE-（XML-外部处理器漏洞）"><a class="header-anchor" href="#XML-External-Entities-XXE-（XML-外部处理器漏洞）"></a>XML External Entities (XXE)（XML 外部处理器漏洞）</h3>
+<p>XXE通常会出现在基于SOAP的系统中，通常需要启用DTD（document type definitions）。<br>
+在应用里比较有可能存在的XXE的点是，如果某些功能是通过SAML来完成的，SAML使用XML作为identity assertion<br>
+另外经过测试，xx应用的Excel文件上传下载部分，不受XXE的影响（XML解析器安全）。<br>
+另外如果需要整体上快速排查XXE漏洞，可以使用源代码分析工具：<a href="https://owasp.org/www-community/Source_Code_Analysis_Tools" target="_blank" rel="noopener">https://owasp.org/www-community/Source_Code_Analysis_Tools</a></p>
+<h3 id="Broken-Access-Control（中断访问控制）"><a class="header-anchor" href="#Broken-Access-Control（中断访问控制）"></a>Broken Access Control（中断访问控制）</h3>
+<h4 id="原因"><a class="header-anchor" href="#原因"></a>原因</h4>
+<p>限制<strong>认证的用户可以实现哪些操作</strong>的命令没有得到正确的执行。</p>
+<h4 id="问题"><a class="header-anchor" href="#问题"></a>问题</h4>
+<p>攻击者可以利用这些漏洞访问未经授权的功能和数据，例如访问其他用户的账户，查看敏感文件，篡改其他用户的数据，更改访问权限等。</p>
+<h4 id="对策"><a class="header-anchor" href="#对策"></a>对策</h4>
+<ul>
+<li>最小权限原则：只给当前程序运行需要的最小信息或资源。可以有效降低被恶意用户利用时造成的损失</li>
+<li>基于角色的访问控制（对角色权限）：对系统操作的各种权限不是直接授予具体的用户，而是在用户集合与权限集合之间建立一个角色集合。每一种角色对应一组相应的权限。一旦用户被分配了适当的角色后，该用户就拥有此角色的所有操作权限。这样做的好处是，不必在每次创建用户时都进行分配权限的操作，只要分配用户相应的角色即可，而且角色的权限变更比用户的权限变更要少得多，这样将简化用户的权限管理，减少系统的开销。</li>
+<li>日志记录访问：对用户的操作进行日志记录，出现异常时可以及时排查原因，可以有效降低损失</li>
+</ul>
+<h3 id="security-misconfiguration（错误安全配置）"><a class="header-anchor" href="#security-misconfiguration（错误安全配置）"></a>security misconfiguration（错误安全配置）</h3>
+<h4 id="原因-v2"><a class="header-anchor" href="#原因-v2"></a>原因</h4>
+<ul>
+<li>安全运营</li>
+<li>比如未修复的漏洞</li>
+<li>访问默认账户</li>
+<li>不再使用的页面</li>
+<li>未受保护的文件和目录等</li>
+</ul>
+<h4 id="对策-v2"><a class="header-anchor" href="#对策-v2"></a>对策</h4>
+<p>程序中接入的第三方提供的东西都需要进行安全配置外，还必须要及时进行更新和升级。</p>
+<h3 id="XSS（跨站脚本攻击）"><a class="header-anchor" href="#XSS（跨站脚本攻击）"></a>XSS（跨站脚本攻击）</h3>
+<h4 id="原因-v3"><a class="header-anchor" href="#原因-v3"></a>原因</h4>
+<p>网站将用户输入的内容输出到页面上，在这个过程中可能有恶意代码被浏览器执行</p>
+<p>跨站脚本攻击,它指的是恶意攻击者往Web页面里插入恶意html代码，当用户浏览该页之时，嵌入其中Web里面的html代码会被执行，从而达到恶意用户的特殊目的。</p>
+<p>需要注意的是XSS是一个完全于客户端触发的安全风险，涉及到服务器端的部分在现实意义的攻击里通常是XSS+CSRF获得用户的Token/Cookie/其他Credentials</p>
+<h4 id="对策-v3"><a class="header-anchor" href="#对策-v3"></a>对策</h4>
+<ul>
+<li>验证所有输入数据，前端对用户提交内容进行内容验证/内容转义</li>
+<li>对输出数据进行适当编码，防止成功注入的恶意脚本被运行</li>
+</ul>
+<p>具体参见下面</p>
+<ul>
+<li>输入验证：某个数据被接受为可被显示或存储之前，使用标准输入验证机制，验证所有输入数据的长度、类型、语法以及业务规则。</li>
+<li>输出编码：数据输出前，确保用户提交的数据已被正确进行entity编码，建议对所有字符进行编码而不仅局限于某个子集。</li>
+<li>明确指定输出的编码方式：不要允许攻击者为你的用户选择编码方式(如ISO 8859-1或 UTF 8)。</li>
+<li>注意黑名单验证方式的局限性：仅仅查找或替换一些字符(如&quot;&lt;&quot; &quot;&gt;&quot;或类似&quot;script&quot;的关键字)，很容易被XSS变种攻击绕过验证机制。</li>
+<li>警惕规范化错误：验证输入之前，必须进行解码及规范化以符合应用程序当前的内部表示方法。请确定应用程序对同一输入不做两次解码。对客户端提交的数据进行过滤，一般建议过滤掉双引号（”）、尖括号（&lt;、&gt;）等特殊字符，或者对客户端提交的数据中包含的特殊字符进行实体转换，比如将双引号（”）转换成其实体形式&quot;，&lt;对应的实体形式是&lt;，&lt;对应的实体形式是&gt;以下为需过滤的常见字符：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[1] |（竖线符号）</span><br><span class="line">[2] &amp; （&amp; 符号）</span><br><span class="line">[3];（分号）</span><br><span class="line">[4] $（美元符号）</span><br><span class="line">[5] %（百分比符号）</span><br><span class="line">[6] @（at 符号）</span><br><span class="line">[7] &#39;（单引号）</span><br><span class="line">[8] &quot;（引号）</span><br><span class="line">[9] \&#39;（反斜杠转义单引号）</span><br><span class="line">[10] \&quot;（反斜杠转义引号）</span><br><span class="line">[11] &lt;&gt;（尖括号）</span><br><span class="line">[12] ()（括号）</span><br><span class="line">[13] +（加号）</span><br><span class="line">[14] CR（回车符，ASCII 0x0d）</span><br><span class="line">[15] LF（换行，ASCII 0x0a）</span><br><span class="line">[16] ,（逗号）</span><br><span class="line">[17] \（反斜杠）</span><br><span class="line">2、在请求返回页面关键字符进行转义；</span><br><span class="line">[1] “（双引号）：&amp;quot</span><br><span class="line">[2] ’ （单引号）：&amp;apos</span><br><span class="line">[3] &amp;（&amp;符号）：&amp;amp</span><br><span class="line">[4] &lt;（左尖括号）：&amp;lt</span><br><span class="line">[5] &gt;（右尖括号）：&amp;gt</span><br><span class="line">在不影响应用的前提下，建议将cookie标记为httpOnly (禁止JS获得Cookie等信息)，同时禁用TRACE方法。</span><br></pre></td></tr></table></figure>
+<h3 id="Insecure-Deserialization（不安全的反序列化）"><a class="header-anchor" href="#Insecure-Deserialization（不安全的反序列化）"></a>Insecure Deserialization（不安全的反序列化）</h3>
+<p>不安全的反序列化最严重的会带来带来RCE（远程代码执行），通常会被用于进行重放攻击，注入攻击和权限提升。</p>
+<h4 id="序列化"><a class="header-anchor" href="#序列化"></a>序列化</h4>
+<p>最严格的禁止反序列化的方式是不接受非受信来源的序列化对象，序列化反序列化问题的根源是语言特性，即面向对象语言所具有的反射机制（动态获得所属类的对象来调用对应的方法）</p>
+<h4 id="对策-v4"><a class="header-anchor" href="#对策-v4"></a>对策</h4>
+<ul>
+<li>缓和方式是在序列化和反序列化的时候进行完整性校验（通常为Hash校验或者签名），也可以进一步进行加密，进行严格类型控制；如果可能，对于不同权限的对象进行隔离，为序列化和反序列化操作提供日志记录，监控inbound/outbound流量，对于持续进行反序列化的操作提供预警。</li>
+<li>关注了解使用了的哪些组件进行了序列化和反序列化操作，他们的实现方式和安全措施是什么，是否启用，是否存在已知的漏洞，定期关注版本发布和升级。</li>
+</ul>
+<h3 id="Using-Components-with-Known-Vulnerabilities（使用含有已知漏洞的组件）"><a class="header-anchor" href="#Using-Components-with-Known-Vulnerabilities（使用含有已知漏洞的组件）"></a>Using Components with Known Vulnerabilities（使用含有已知漏洞的组件）</h3>
+<p>一方面是在选用组件的时候选用名声可信，社区活跃，安全机制较为完善的第三方组件；另一方面需要持续关注新漏洞的发布。</p>
+<h3 id="Insufficient-Logging-Monitoring-（不足的日志和监控）"><a class="header-anchor" href="#Insufficient-Logging-Monitoring-（不足的日志和监控）"></a>Insufficient Logging &amp; Monitoring. （不足的日志和监控）</h3>
+<p>这部分属于安全运营部分，主要是在程序设计时候要留有足够的日志整段信息来追踪漏洞，</p>
+<h3 id="Cross-site-Request-Forgery-跨站请求伪造"><a class="header-anchor" href="#Cross-site-Request-Forgery-跨站请求伪造"></a>Cross-site Request Forgery(跨站请求伪造)</h3>
+<p>这个是培训时没有说明但实际上对FE来说是需要了解的。所以在这里加进来进行补充说明。</p>
+<h4 id="原理"><a class="header-anchor" href="#原理"></a>原理</h4>
+<ul>
+<li><strong>用户C</strong>登录受信任的<strong>站点A</strong></li>
+<li>浏览器生成站点A的cookie信息</li>
+<li>未登出的情况下访问<strong>恶意网站B</strong>（其实登出也不一定，因为不能保证cookie登出后就会失效）</li>
+<li>网站B向网站A发起请求，该请求会带上步骤2的cookie信息</li>
+<li>网站B通过该cookie信息，伪装成用户C进行操作（邮件/信息/转账等等）</li>
+</ul>
+<h4 id="对策-v5"><a class="header-anchor" href="#对策-v5"></a>对策</h4>
+<ul>
+<li>验证 HTTP Referer 字段：Referer字段是用来记录请求的来源地址，因为CSRF一般需要自己构造表单来请求。所以referer字段会不一样，所以对于referer不符合的，直接拒绝请求</li>
+<li>cookie中加入hash： 在cookie中加入hash，然后在后端校验hash值是否正确，来判断请求是否是真的客户发送的</li>
+<li>cookie设置为httpOnly：可以有效减少cookie被获取的风险</li>
+<li>其实总的来说，上面的方法其实防御思路都一样。<strong>就是通过在请求中加入攻击者伪造不了的信息，然后通过这些信息来判断请求是否是真正的客户发送的。当然这些信息不应该存在cookie中</strong></li>
+</ul>
+<h2 id="信息安全设计思路："><a class="header-anchor" href="#信息安全设计思路："></a>信息安全设计思路：</h2>
+<ul>
+<li>系统设计要有适度安全冗余，冗余是指关键功能的安全保障要多层。</li>
+<li>流行的攻击方式要从设计上就预留应对空间。比如SQL Injection要保证使用的数据库支持参数化查询，比如应对不安全的反序列化，要预留设计数字签名校验机制的空间。</li>
+<li>最小化权限原则</li>
+<li>验证用户输入（天然认为用户的输入不安全的设计思路）</li>
+<li>失败默认原则，白名单优先于黑名单</li>
+<li>默认安全，就是默认配置即认为可提供可靠安全。</li>
+<li>权限分离原则，进一步，矩阵访问控制设计。</li>
+<li>服务器端的校验比客户端优先</li>
+</ul>
+<h3 id="总结"><a class="header-anchor" href="#总结"></a>总结</h3>
+<p>作为前端，我们也需要了解信息安全的重要性。并且在coding的时候也需要注意程序安全上是否有存在隐患。😘</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xzh</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://xzh97.github.io/2020/08/23/information-safe/">https://xzh97.github.io/2020/08/23/information-safe/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>最是人间孤愤难平，直消得几回潮落又潮生！</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"># 信息安全</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/11/20/learn-webpack/">【Webpack】基础配置</a>
+            
+            
+            <a class="next" rel="next" href="/2020/08/01/http-protocol/">HTTP协议学习（一）</a>
+            
+        </section>
+
+        
+        
+        <script type="text/javascript" async>
+    let gitalkContainer = document.createElement('div')
+    let postWrap = document.querySelector('.post-wrap');
+    gitalkContainer.id = 'gitalk-container'
+    postWrap.appendChild(gitalkContainer);
+    let params = {
+    clientID: '73f1c80bba01cb73e53d',
+    clientSecret: 'fb38d78684a17e97a441a4cd0db47dc642423678',
+    repo: 'xzh97.github.io',
+    admin: ['xzh97'],
+    id: window.location.pathname,
+    owner: 'xzh97',
+    distractionFreeMode: false,
+    }
+    let gitalk = new Gitalk(params)
+    gitalk.render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xzh | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

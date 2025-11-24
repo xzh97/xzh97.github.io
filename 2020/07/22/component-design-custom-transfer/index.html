@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xzh">
+
+
+    <meta name="subtitle" content="何须仰望他人，自己亦是风景">
+
+
+    <meta name="description" content="xzh的个人博客">
+
+
+    <meta name="keywords" content="xzh,博客">
+
+
+<title>组件设计思考-CustomTransfer | 追梦的蚂蚁</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="追梦的蚂蚁" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xzh97&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xzh97&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">组件设计思考-CustomTransfer</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">xzh</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">July 22, 2020&nbsp;&nbsp;21:40:46</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="组件设计"><a class="header-anchor" href="#组件设计"></a>组件设计</h2>
+<h3 id="前言"><a class="header-anchor" href="#前言"></a>前言</h3>
+<p>本来之前部门那边有这样类似的框，我还以为这个组件是通用组件，结果发现并不是。而且选择部门那块业务相关代码实在太多。所以此次需求里，我准备写个通用的</p>
+<h3 id="设计"><a class="header-anchor" href="#设计"></a>设计</h3>
+<h4 id="成品图"><a class="header-anchor" href="#成品图"></a>成品图</h4>
+<p><img src="http://122.51.73.210:3000/upload/2020-07-22/202007224899.jpg" alt="image"></p>
+<h3 id="组件实例之CustomTransfer组件设计"><a class="header-anchor" href="#组件实例之CustomTransfer组件设计"></a>组件实例之CustomTransfer组件设计</h3>
+<h4 id="设计思路"><a class="header-anchor" href="#设计思路"></a>设计思路</h4>
+<h5 id="内容布局"><a class="header-anchor" href="#内容布局"></a>内容布局</h5>
+<p><img src="http://122.51.73.210:3000/upload/2020-07-22/20200722319.png" alt="image"></p>
+<h5 id="数据处理"><a class="header-anchor" href="#数据处理"></a>数据处理</h5>
+<ul>
+<li>通用数据格式:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">    key: &#39;&#39;,  &#x2F;&#x2F; 索引，做diff用</span><br><span class="line">    value: &#39;&#39;, &#x2F;&#x2F; 变量value</span><br><span class="line">    label: &#39;&#39;, &#x2F;&#x2F; 变量名称</span><br><span class="line">    type: &#39;&#39;, &#x2F;&#x2F; 变量类型</span><br><span class="line">    children:[] &#x2F;&#x2F; 变量子级数组</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>数据获取方式
+<ul>
+<li>外部传入<code>dataSource</code></li>
+<li>外部传入<code>method, getUrl, extraParams, searchKey</code></li>
+</ul>
+</li>
+<li>数据转换方式：
+<ul>
+<li>传入<code>labelKey，valueKey，childKey，typeKey</code>然后通过<code>formater</code>转换数据格式。</li>
+</ul>
+</li>
+</ul>
+<h4 id="交互"><a class="header-anchor" href="#交互"></a>交互</h4>
+<ul>
+<li>未弹框显示一个<code>multiple</code>模式的<code>select</code>控件</li>
+<li>点击<code>Select</code> 出现<code>Modal</code>弹框</li>
+<li>左上<code>Input</code>可以实时模糊查询</li>
+<li>搜索出的列表展示在左下方，点击列表<code>item</code>来选择控件，若传入<code>typeCheck</code>，则点击时对选择做类型校验</li>
+<li>已选择的列表展示在右下方，可以点击右侧X样式的<code>icon</code>删除</li>
+<li>点击取消 不保存已选择控件列表</li>
+<li>点击确定，保存已选择控件列表</li>
+</ul>
+<h3 id="优点"><a class="header-anchor" href="#优点"></a>优点</h3>
+<ul>
+<li>布局清晰，各模块功能思路清楚，可读性好。</li>
+<li>在外部加载数据传入组件内，由于组件在外部可能并发使用较多，所以为了避免同时调用此接口，建议在外部传入<code>dataSource</code>。</li>
+</ul>
+<h3 id="不足"><a class="header-anchor" href="#不足"></a>不足</h3>
+<ul>
+<li>传入的<code>typeCheck</code>和<code>isError</code>属性，这里并不符合我的预期。因为这里是业务的需求，而不是组件本身的需求。但由于外部页面布局未使用<code>FormItem</code>包裹，不好做处理保存的报错提示处理。</li>
+<li>组件设计也许可以更好</li>
+</ul>
+<h3 id="思考"><a class="header-anchor" href="#思考"></a>思考</h3>
+<ul>
+<li>对组件做一个大致的布局，可以清晰的知道有哪些交互需要实现。</li>
+<li>对传入的数据作适配处理，这里也是暂时有点困惑我的地方，因为不同接口数据格式可能不同，目前设计中，是在外部传入<code>valueKey</code>，<code>labelKey</code>，<code>childKey</code>来判断。这里可以思考下是否有更好的处理方式</li>
+<li>在加入业务需求处理时，这里更好的处理方式是写一个新的业务组件，然后把<code>customTransfer</code>作为一个子组件加进去，其它地方加入业务处理。 而不应该直接加进来。</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xzh</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://xzh97.github.io/2020/07/22/component-design-custom-transfer/">https://xzh97.github.io/2020/07/22/component-design-custom-transfer/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>最是人间孤愤难平，直消得几回潮落又潮生！</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        <a href="/tags/%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/"># 组件设计</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/08/01/http-protocol/">HTTP协议学习（一）</a>
+            
+            
+            <a class="next" rel="next" href="/2020/05/12/vue-reactivty/">Vue源码学习（一）：响应式-1</a>
+            
+        </section>
+
+        
+        
+        <script type="text/javascript" async>
+    let gitalkContainer = document.createElement('div')
+    let postWrap = document.querySelector('.post-wrap');
+    gitalkContainer.id = 'gitalk-container'
+    postWrap.appendChild(gitalkContainer);
+    let params = {
+    clientID: '73f1c80bba01cb73e53d',
+    clientSecret: 'fb38d78684a17e97a441a4cd0db47dc642423678',
+    repo: 'xzh97.github.io',
+    admin: ['xzh97'],
+    id: window.location.pathname,
+    owner: 'xzh97',
+    distractionFreeMode: false,
+    }
+    let gitalk = new Gitalk(params)
+    gitalk.render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xzh | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

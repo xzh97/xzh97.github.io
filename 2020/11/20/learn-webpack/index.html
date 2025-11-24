@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xzh">
+
+
+    <meta name="subtitle" content="何须仰望他人，自己亦是风景">
+
+
+    <meta name="description" content="xzh的个人博客">
+
+
+    <meta name="keywords" content="xzh,博客">
+
+
+<title>【Webpack】基础配置 | 追梦的蚂蚁</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="追梦的蚂蚁" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xzh97&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xzh97&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">【Webpack】基础配置</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">xzh</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 20, 2020&nbsp;&nbsp;11:51:23</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
+<p>馋<code>webpack</code>已经很久了，今天就来学学吧。😜。</p>
+<p>（第一版其实是2月份的文章了，但是最近这个月决定重新学webpack，所以决定把日期改成最近的时间）</p>
+<h2 id="概念"><a class="header-anchor" href="#概念"></a>概念</h2>
+<p>Webpack是一个前端资源加载/打包工具，也是前端工程化的体现。</p>
+<h2 id="Webpack基础配置"><a class="header-anchor" href="#Webpack基础配置"></a>Webpack基础配置</h2>
+<h3 id="mode"><a class="header-anchor" href="#mode"></a>mode</h3>
+<p><code>mode</code>用来告知<code>webpack</code>需要采用对应模式的内置优化。可以在<code>webpack.config.js</code>里设置，也可以在<code>npm</code>命令里添加 <code>--mode</code>参数来设置。有以下两种：</p>
+<ul>
+<li>development  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; webpack.development.config.js</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">mode: &#39;development&#39;</span><br><span class="line">plugins: [</span><br><span class="line">    new webpack.NamedModulesPlugin(),</span><br><span class="line">    new webpack.DefinePlugin(&#123; &quot;process.env.NODE_ENV&quot;: JSON.stringify(&quot;development&quot;) &#125;),</span><br><span class="line">]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>production  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; webpack.production.config.js</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">mode: &#39;production&#39;,</span><br><span class="line">plugins: [</span><br><span class="line">    new UglifyJsPlugin(&#x2F;* ... *&#x2F;),</span><br><span class="line">    new webpack.DefinePlugin(&#123; &quot;process.env.NODE_ENV&quot;: JSON.stringify(&quot;production&quot;) &#125;),</span><br><span class="line">    new webpack.optimize.ModuleConcatenationPlugin(),</span><br><span class="line">    new webpack.NoEmitOnErrorsPlugin()</span><br><span class="line">]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>设置mode时同时会把 process.env.NODE_ENV设置为当前环境的值</strong></p>
+<h4 id="entry"><a class="header-anchor" href="#entry"></a>entry</h4>
+<p><code>entry</code>其实就是指定<code>webpack</code>读取项目的起始点，配置方式有以下这些：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    <span class="comment">// 单入口</span></span><br><span class="line">    entry: <span class="string">'./entry1'</span>,</span><br><span class="line">    <span class="comment">//多入口</span></span><br><span class="line">    entry: [</span><br><span class="line">        <span class="string">'./entry1'</span>,</span><br><span class="line">        <span class="string">'./entry2'</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 多入口时</span></span><br><span class="line">    entry:&#123;</span><br><span class="line">        a: <span class="string">'./entry1'</span>,</span><br><span class="line">        <span class="comment">//若b有多个入口</span></span><br><span class="line">        b: [<span class="string">'./entry2-a'</span>, <span class="string">'./entry2-b'</span>,],</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="loader"><a class="header-anchor" href="#loader"></a>loader</h3>
+<p>首先，<code>webpack</code>本身的打包只是对js文件的打包，那么非js文件怎么打包进来呢？这个时候<code>loader</code>的作用就体现出来了。<code>loader</code>就是一个转译器，<strong>它可以把非js文件进行处理，然后使得非js文件可以进入构建包内。</strong></p>
+<p><a href="https://www.webpackjs.com/api/loaders/" target="_blank" rel="noopener">想了解更多的loader信息可点击此处</a></p>
+<p>那么如何使用<code>loader</code>呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    modules:&#123;</span><br><span class="line">        rules:[</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.css$/</span>, </span><br><span class="line">                <span class="comment">// 1. loader不需要做其它配置时</span></span><br><span class="line">                use: <span class="string">'css-loader'</span>,</span><br><span class="line">                <span class="comment">// 2. loader需要传入参数配置</span></span><br><span class="line">                use: [</span><br><span class="line">                    loader: <span class="string">'css-loader'</span>,</span><br><span class="line">                    options:&#123;</span><br><span class="line">                        modules: <span class="literal">true</span></span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实还可以在<code>cli</code>命令里加入以下<code>--module bind 'css=style-loader!css-loader'</code>以及在源码中直接导入 <code>loader</code>的东西，但是这两种方式都不太好，容易导致意外的错误且不易调试。</p>
+<p>所以还是推荐写在<code>modules.rules</code>。</p>
+<p>这里就简单列举一些常用的loader</p>
+<ul>
+<li><code>css-loader</code>: 解析<code>css</code>文件</li>
+<li><code>style-loader</code>: 把解析好的<code>css</code>用<code>style</code>标签显示出来</li>
+<li><code>babel-loader</code>: 把<code>es6</code>及之后的语法解析成<code>es5</code>语法，最大的作用就是兼容浏览器。</li>
+<li><code>url-loader</code>,<code>file-loader</code>: <code>webpack</code>加载图片, <code>url-loader</code>更像是<code>file-loader</code>的增强版。当设置<code>limit</code>时，超出此范围则用<code>file-loader</code>解析，小于则返回<code>base64</code>格式。</li>
+<li><code>raw-loader</code>: 读取文件内的内容，并作为字符串返回</li>
+<li><code>sass-loader</code>,<code>less-loader</code>: css预编译文件解析。</li>
+<li><code>vue-loader</code>: 解析<code>.vue</code>文件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    modules：&#123;</span><br><span class="line">        rules:[</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">                use:[<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>, <span class="string">'scss-loader'</span>]</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用多个loader时是有顺序的，顺序是从右到左。但实际调用过程上如下所示</span></span><br><span class="line"><span class="comment">// pitch方法意为跳过</span></span><br><span class="line">|- a-loader <span class="string">`pitch`</span></span><br><span class="line">  |- b-loader <span class="string">`pitch`</span></span><br><span class="line">    |- c-loader <span class="string">`pitch`</span></span><br><span class="line">      |- requested <span class="built_in">module</span> is picked up <span class="keyword">as</span> a dependency</span><br><span class="line">    |- c-loader normal execution</span><br><span class="line">  |- b-loader normal execution</span><br><span class="line">|- a-loader normal execution</span><br></pre></td></tr></table></figure>
+<h3 id="plugins"><a class="header-anchor" href="#plugins"></a>plugins</h3>
+<p>首先，<code>plugin</code>的机制来说我个人觉得和浏览器内的交互事件其实比较类似。因为<code>webpack</code>在运行周期时同样会有很多的事件，所以<code>plugins</code>的作用可以类比于我们在浏览器中对元素的事件监听处理。其实就是我们调用<code>webpack</code>的底层<code>api</code>来编写具体功能的实现。它可以是一个构建时的处理，也可以是对输出结果的优化（其实就是打包优化），还可以对引入资源进行管理。从这里来看，<code>plugins</code>的功能范围对比起<code>loader</code>来说是更加广泛的。</p>
+<p><a href="https://www.webpackjs.com/api/plugins/" target="_blank" rel="noopener">想了解更多的plugins信息可点击此处</a></p>
+<p>那么如何使用<code>plugins</code>呢？ 其实只需要在<code>webpack.config.js</code>里的<code>plugins</code>参数里设置就可以了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    plugins:[</span><br><span class="line">        <span class="comment">// 引入插件然后在这里传入插件的实例化对象，</span></span><br><span class="line">        <span class="comment">// new plugin(&#123;//插件参数...&#125;)</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 举个具体的栗子：</span></span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            template: <span class="string">'./index.html'</span>,</span><br><span class="line">            </span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以下列举一些常用的插件：</p>
+<ul>
+<li><code>mini-css-extract-plugin</code> &amp; <code>extract-text-webpack-plugin</code>
+<ul>
+<li>作用：抽离<code>css</code>到单独的文件中并以<code>link</code>引入到<code>html</code>中使用。</li>
+<li>使用：<code>webpack &gt;= 4.0 ? mini-css-extract-plugin : extract-text-webpack-plugin</code></li>
+</ul>
+</li>
+<li><code>html-webpack-plugin</code>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plugins:[</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">        template: <span class="string">'./index.html'</span>, <span class="comment">// 模板html,</span></span><br><span class="line">        filename: <span class="string">'index.html'</span>, <span class="comment">// 目标html</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><code>mini-css-extract-plugin</code>
+<ul>
+<li>打包的时候提取<code>css</code>到单独的文件，并且支持按需加载和<code>sourceMap</code></li>
+</ul>
+</li>
+<li><code>progress-bar-webpack-plugin</code>
+<ul>
+<li><code>vue-cli 3</code>打包的时候无法显示出打包所花费的时间，加这个可以显示出来</li>
+</ul>
+</li>
+<li><code>purge-css-webpack-plugin</code>
+<ul>
+<li>删除未使用的<code>css</code></li>
+</ul>
+</li>
+<li><code>DLLPlugin和DLLReferencePlugin</code>
+<ul>
+<li><code>DLLPlugin</code>主要作用是把一些不经常变化的第三方库单独打包出来，然后会生成一个<code>manifest.json</code>，然后通过<code>DLLReferencePlugin</code>去引用。可以提升构建速度</li>
+</ul>
+</li>
+<li><code>add-asset-html-webpack-plugin</code>
+<ul>
+<li>页面打包后，插入我们特定<code>script</code>的引用，来达到全局变量的效果（暴露在<code>Window</code>下）</li>
+</ul>
+</li>
+<li><code>commons-chunk-plugin</code>&amp;<code>split-chunk-plugin</code>
+<ul>
+<li>两者主要是用来提取第三方库和公共模块代码，避免首屏加载的bundle文件或者按需加载的bundle文件体积过大，从而导致加载时间过长。</li>
+<li>后者是前者的升级版，解决了前者在提取公共代码的重复问题。且webpack4中已经删除了<code>commons-chunk-plugin</code>改用了<code>split-chunk-plugin</code>。</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; commons和split的对比</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; commons-chunk-plugin</span><br><span class="line">chunk-a: react, react-dom, a-comp</span><br><span class="line">chunk-b: react, react-dom, b-comp</span><br><span class="line">&#x2F;&#x2F; 会出现重复代码</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; split-chunk-plugin</span><br><span class="line">chunk-a ~ chunk-b : react, react-dom,</span><br><span class="line">chunk-a: a-comp</span><br><span class="line">chunk-b: b-comp</span><br><span class="line">&#x2F;&#x2F; 不会出现重复代码</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="resolve"><a class="header-anchor" href="#resolve"></a>resolve</h3>
+<p><code>resolve</code>的作用是设置模块怎么被解析，数据结构是<code>Object</code>。接下来列举一些比较常用的属性。</p>
+<h4 id="alias"><a class="header-anchor" href="#alias"></a>alias</h4>
+<p><code>alias</code>作用是设置别名，可以使得引入模块变得更加简单。举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置</span></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    resolve:&#123;</span><br><span class="line">        alias:&#123;</span><br><span class="line">            <span class="comment">// path.resolve来确定引入路径不会出问题</span></span><br><span class="line">            <span class="string">"@"</span>: path.resolve(__dirname, <span class="string">'./src'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入模块时</span></span><br><span class="line"><span class="keyword">import</span> HomeView <span class="keyword">from</span> <span class="string">'@/views/home/index.vue'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="extensions"><a class="header-anchor" href="#extensions"></a>extensions</h4>
+<p><code>extensions</code>作用是自动扩展，可以自动解析确定的扩展。举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置</span></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    resolve:&#123;</span><br><span class="line">        <span class="comment">// 默认选项是.js .json</span></span><br><span class="line">        extensions: [<span class="string">'.js'</span>, <span class="string">'json'</span>, <span class="string">'.vue'</span>],</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入模块时可以不指定扩展（也就是文件后缀名）</span></span><br><span class="line"><span class="keyword">import</span> HomeView <span class="keyword">from</span> <span class="string">'@/views/home/index'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="modules"><a class="header-anchor" href="#modules"></a>modules</h4>
+<p><code>modules</code>作用是告诉webpack解析时应该搜索的目录。举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置</span></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    resolve:&#123;</span><br><span class="line">        <span class="comment">// 意思是webpack搜索目录优先找src目录下的，没有再从node_modules找</span></span><br><span class="line">        modules: [path.resolve(__dirname, <span class="string">'./src/'</span>), <span class="string">'node_modules'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 此时也可以不写前面的 '@/'，和alias有异曲同工之妙</span></span><br><span class="line"><span class="keyword">import</span> HomeView <span class="keyword">from</span> <span class="string">'views/home/index.vue'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="devServer"><a class="header-anchor" href="#devServer"></a>devServer</h3>
+<p><code>devServer</code>是开发中用来启动本地服务，方便开发。下面举个栗子来说明各属性作用😂</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置</span></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        open: <span class="literal">false</span>, <span class="comment">// 是否自动打开浏览器</span></span><br><span class="line">        port: <span class="number">8080</span>, <span class="comment">// 本地服务启用端口</span></span><br><span class="line">        <span class="comment">// webpack中有一个hotModuleReplacementPlugin, hot选项其实就可以当作是否启用了这个插件。</span></span><br><span class="line">        hot: <span class="literal">true</span>, <span class="comment">// 是否启用热更新</span></span><br><span class="line">        compress: <span class="literal">true</span>, <span class="comment">// 是否启用gzip压缩</span></span><br><span class="line">        https: <span class="literal">true</span>, <span class="comment">// 是否启用https</span></span><br><span class="line">        <span class="comment">// 是否开启代理</span></span><br><span class="line">        proxy: &#123;</span><br><span class="line">            <span class="string">'/api'</span>: &#123;</span><br><span class="line">                target: <span class="string">'localhost:3000/'</span>, <span class="comment">// 对应自己的后端接口</span></span><br><span class="line">                changeOrigin: <span class="literal">true</span>, <span class="comment">// 请求头中显示target</span></span><br><span class="line">                ws: <span class="literal">true</span>, <span class="comment">// 是否代理websocket</span></span><br><span class="line">                pathRewrite: &#123;</span><br><span class="line">                  <span class="string">'^/api'</span>: <span class="string">''</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 是否指定静态文件目录，</span></span><br><span class="line">        contentBase: path.join(__dirname, <span class="string">"public"</span>), </span><br><span class="line">        publicPath: <span class="string">'/'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="externals"><a class="header-anchor" href="#externals"></a>externals</h3>
+<p>按照<code>webpack</code>官网里的解释，如果我们想引用一个库，但是又不想把<code>webpack</code>把它打进包里且我们希望可以正常引用这个库。这个时候就可以使用<code>externals</code>配置。例如官网中的栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.html</span></span><br><span class="line">&lt;script</span><br><span class="line">  src=<span class="string">"https://code.jquery.com/jquery-3.1.0.js"</span></span><br><span class="line">  integrity=<span class="string">"sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="</span></span><br><span class="line">  crossorigin=<span class="string">"anonymous"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/webpack.config.js</span></span><br><span class="line"><span class="regexp">const config = &#123;</span></span><br><span class="line"><span class="regexp">    externals: &#123;</span></span><br><span class="line"><span class="regexp">        jquery: jQuery</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 引用</span></span><br><span class="line"><span class="regexp">import $ from 'jquery';</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">$('.my-element').animate(...);</span></span><br></pre></td></tr></table></figure>
+<h2 id="相关文章"><a class="header-anchor" href="#相关文章"></a>相关文章</h2>
+<p><a href="https://xzh97.github.io/2020/12/03/learn-webpack-optimization/">【Webpack】项目优化</a></p>
+<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
+<p>其实看了这些配置，基础的webpack配置已经没有啥大问题了。还有一些比较小的点就没写了，之后有疑问也可以去<a href="https://www.webpackjs.com/concepts/" target="_blank" rel="noopener">webpack中文网</a>查看对应部分配置。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xzh</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://xzh97.github.io/2020/11/20/learn-webpack/">https://xzh97.github.io/2020/11/20/learn-webpack/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>最是人间孤愤难平，直消得几回潮落又潮生！</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/webpack/"># webpack</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/12/03/learn-webpack-optimization/">【Webpack】项目优化</a>
+            
+            
+            <a class="next" rel="next" href="/2020/08/23/information-safe/">信息安全学习</a>
+            
+        </section>
+
+        
+        
+        <script type="text/javascript" async>
+    let gitalkContainer = document.createElement('div')
+    let postWrap = document.querySelector('.post-wrap');
+    gitalkContainer.id = 'gitalk-container'
+    postWrap.appendChild(gitalkContainer);
+    let params = {
+    clientID: '73f1c80bba01cb73e53d',
+    clientSecret: 'fb38d78684a17e97a441a4cd0db47dc642423678',
+    repo: 'xzh97.github.io',
+    admin: ['xzh97'],
+    id: window.location.pathname,
+    owner: 'xzh97',
+    distractionFreeMode: false,
+    }
+    let gitalk = new Gitalk(params)
+    gitalk.render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xzh | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

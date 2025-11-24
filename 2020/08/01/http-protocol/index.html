@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xzh">
+
+
+    <meta name="subtitle" content="何须仰望他人，自己亦是风景">
+
+
+    <meta name="description" content="xzh的个人博客">
+
+
+    <meta name="keywords" content="xzh,博客">
+
+
+<title>HTTP协议学习（一） | 追梦的蚂蚁</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="追梦的蚂蚁" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xzh97&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xzh97&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">HTTP协议学习（一）</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">xzh</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 1, 2020&nbsp;&nbsp;10:40:46</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
+<p>本文主要是为了记录平时阅读&lt;&lt;HTTP权威指南&gt;&gt;的一些知识点的。 把它们抽离出来，记录在本篇文章中，方便平时的理解</p>
+<h3 id="URI（Uniform-Resource-Identifier，统一资源标识符）"><a class="header-anchor" href="#URI（Uniform-Resource-Identifier，统一资源标识符）"></a>URI（Uniform Resource Identifier，统一资源标识符）</h3>
+<p><code>URI</code>的作用是<strong>指示http协议去获取对应服务器上的数据</strong>。它有两种形式，分别是<code>URL（Uniform Resource Locator 统一资源定位符）</code>和<code>URN（Uniform Resource Name 统一资源名）</code>。</p>
+<p>我们当前的所用的几乎所有的<code>URI</code>都是<code>URL</code>形式，<code>URN</code>由于缺少架构支撑，目前还只能在实验阶段。所以之后我们说的<code>URI</code>指的都是<code>URL</code>。</p>
+<h3 id="URL"><a class="header-anchor" href="#URL"></a>URL</h3>
+<h4 id="格式"><a class="header-anchor" href="#格式"></a>格式</h4>
+<p>根据<a href="https://www.ietf.org/rfc/rfc1738.txt" target="_blank" rel="noopener">RFC 1738</a>,URL的格式为以下：</p>
+<blockquote>
+<p>“…Only alphanumerics [0-9a-zA-Z], the special characters “$-_.+!*’(),” [not including the quotes - ed], and reserved characters used for their reserved purposes may be used unencoded within a URL.”</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;翻译</span><br><span class="line">只有字母和数字[0-9a-zA-Z]、一些特殊符号&#96;$-_.+!*&#39;()&#96;,以及某些保留字，才可以不经过编码直接用于URL。</span><br></pre></td></tr></table></figure>
+<h4 id="组成"><a class="header-anchor" href="#组成"></a>组成</h4>
+<p>一般来说，URL由三部分组成：</p>
+<ol>
+<li>协议（scheme）：指明访问资源使用的协议类型</li>
+<li>服务器（host:port）：服务器地址</li>
+<li>本地资源（url-path）：访问的资源在服务器的路径</li>
+</ol>
+<h3 id="HTTP协议"><a class="header-anchor" href="#HTTP协议"></a>HTTP协议</h3>
+<h4 id="HTTP报文"><a class="header-anchor" href="#HTTP报文"></a>HTTP报文</h4>
+<ul>
+<li>起始行：内容主要是<code>http version，http status，method，url</code>等</li>
+<li>首部字段：<code>request Headers &amp; response Headers</code></li>
+<li>主体：真正传输的数据</li>
+</ul>
+<h3 id="HTTP连接"><a class="header-anchor" href="#HTTP连接"></a>HTTP连接</h3>
+<p><a href="https://xzh97.github.io/2020/01/15/url-parse/">URL从输入到页面展示的过程</a></p>
+<h3 id="TCP协议"><a class="header-anchor" href="#TCP协议"></a>TCP协议</h3>
+<p>HTTP只是一个应用层协议，本身并不关注数据的传输，负责传输数据的就是协议就是用的传输层TCP/IP协议。</p>
+<p>TCP（Transmission Control Protocol），意为：传输控制协议。TCP可以给我们带来通用的、可靠的传输协议。</p>
+<p>TCP传输的数据有以下几点特点：</p>
+<ul>
+<li>无差错： 不会不传，漏传，多传。</li>
+<li>按序传输：传输的报文顺序不会出错。</li>
+<li>未分段的数据流：可以在任意时间以任意大小传输</li>
+</ul>
+<h4 id="TCP协议的可靠性如何保证？"><a class="header-anchor" href="#TCP协议的可靠性如何保证？"></a>TCP协议的可靠性如何保证？</h4>
+<p>那么，TCP是如何保证自己传输的数据是可靠的呢？</p>
+<ul>
+<li>
+<p>校验和：</p>
+<ul>
+<li>发送端：原码相加，将高位叠加到低位，取反，得到反码求和结果，加入校验和字段</li>
+<li>接收端：将所有原码相加，高位叠加，如全为1，则正确</li>
+<li>结果：如果校验和出错，此数据包会被放弃。</li>
+</ul>
+</li>
+<li>
+<p>确认应答和序列号：</p>
+<ul>
+<li>序列号：所有数据包会依序编号</li>
+<li>确认应答：接收方接收到数据之后就会确认</li>
+</ul>
+</li>
+<li>
+<p>超时重传：数据包传出之后，会启动一个计时器，一旦数据传输超时，TCP就会重新发送超时的数据包。</p>
+<p><strong>注意：超时以500ms为单位，每次判定超时重发的超时时间都是500ms的整数倍且重发时间按照指数增长，计算方式为<code>2^重发次数*500ms</code></strong></p>
+</li>
+<li>
+<p>连接管理：三次握手和四次挥手</p>
+</li>
+<li>
+<p>流量控制：TCP连接的两端都有接收数据的一个缓冲区，TCP的接收端只允许发送端发送接收端缓冲区能接纳的数据。如果数据发送过快，就控制流量的发送速度且把改变的速度发到发送端</p>
+</li>
+<li>
+<p>拥塞控制：当前网络拥堵时，传送的数据过慢会导致超时，然后TCP会进行重发，会造成网络更加拥堵，所以此时会减少发送数据速率。 这里和流量控制不一样的地方在于，流量控制是为了接收端能及时接收到数据，而拥塞控制是为了降低网络堵塞的程度</p>
+<p>拥塞控制主要通过以下几个算法</p>
+<ul>
+<li>慢开始算法</li>
+<li>拥塞避免</li>
+<li>快重传</li>
+<li>快恢复</li>
+</ul>
+</li>
+</ul>
+<h4 id="三次握手"><a class="header-anchor" href="#三次握手"></a>三次握手</h4>
+<p>TCP的三次握手其实就是对服务端状态和客户端状态做一个确认，这也是对TCP可靠性的一个支撑。接下来说一下三次握手的过程：</p>
+<ol>
+<li>第一次握手：建立连接时，客户端发送syn包（seq=j）到服务器，并进入SYN_SENT状态，等待服务器确认；SYN：同步序列编号（Synchronize Sequence Numbers）。</li>
+<li>第二次握手：服务器收到syn包，必须确认客户的SYN（ack=j+1），同时自己也发送一个SYN包（seq=k），即SYN+ACK包，此时服务器进入SYN_RECV状态。</li>
+<li>第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED（TCP连接成功）状态，完成三次握手。</li>
+</ol>
+<h4 id="四次挥手"><a class="header-anchor" href="#四次挥手"></a>四次挥手</h4>
+<p>TCP的四次挥手用于释放TCP连接，具体过程如下：</p>
+<ol>
+<li>客户端发送数据包给服务端并进入<strong>终止等待1</strong><code>FIN-WAIT-1</code>状态</li>
+<li>服务端接收数据包,然后返回一个数据包给客户端并进入<strong>半关闭</strong><code>CLOSE-WAIT</code>状态，客户端接收到数据包进入<strong>终止等待2</strong><code>FIN-WAIT-2</code>状态</li>
+<li>服务端发送数据包给客户端并进入<strong>最后确认</strong><code>LAST-ACK</code>状态</li>
+<li>客户端发送数据包给服务端，然后进入<strong>时间等待</strong><code>TIME-WAIT</code>状态，在经过<code>2MSL</code>（<code>MSL</code>是指一个网络片段的最大存活时间，<code>2MSL</code>刚好是一个发送和返回的最大时间）之后，客户端进入<strong>关闭</strong><code>CLOSED</code>状态，服务端接收到数据包之后立马进入<strong>关闭</strong><code>CLOSED</code>状态</li>
+</ol>
+<h4 id="滑动窗口技术"><a class="header-anchor" href="#滑动窗口技术"></a>滑动窗口技术</h4>
+<p>TCP中实际的传输数据方式。要了解滑动窗口技术，我们首先得了解窗口机制。<strong>窗口实际上就是数据传输的管道</strong>。窗口大小跟数据传输量成正相关。</p>
+<p>滑动窗口技术实质上就是指<strong>通过动态控制数据窗口大小来调节两台主机间的数据传输速率</strong>，上面的流量控制和拥塞控制实际上都是通过滑动窗口技术来完成的。</p>
+<h3 id="Web页面的结构组件"><a class="header-anchor" href="#Web页面的结构组件"></a>Web页面的结构组件</h3>
+<p>Web不只有浏览器和服务器，还有一些其它的重要的程序。</p>
+<p>主要有以下一些：</p>
+<ul>
+<li>代理：代理就是在浏览器和服务器之间的一层中间实体，它的作用在于对http请求进行<strong>封装/拦截/过滤/监控</strong>。</li>
+<li>缓存：作用就是把请求到的数据保存到内存/本地中，使得用户请求数据的数据如果没有变化时可以不用与服务端进行请求连接，而可以直接从本地/内存里取已有的数据</li>
+<li>网关：资源处理器/协议转换器，可以用来对请求进行响应或者对协议进行处理。</li>
+<li>隧道：使得用户可以通过http程序访问非http协议的程序</li>
+<li>agent代理：代表用户对http发起请求的程序，目前我们的web浏览器就是一种agent代理。爬虫程序也是agent代理</li>
+</ul>
+<h3 id="HTTPS"><a class="header-anchor" href="#HTTPS"></a>HTTPS</h3>
+<p>首先，我们都知道HTTP请求其实是明文传输的，但是这样的话一些隐私的信息就很容易被别人知道。所以为了保护隐私信息，推出了HTTPS，通俗的讲，HTTPS其实就是在HTTP连接中新增了一层安全层面的处理。</p>
+<p>HTTP的连接过程是这样的：发送端 --&gt; HTTP --&gt; TCP --&gt; IP。</p>
+<p>而HTTPS其实就是在HTTP --&gt; TCP这里加了一层SSL层来对数据进行加密保护。</p>
+<h4 id="服务器证书-Server-Certificates"><a class="header-anchor" href="#服务器证书-Server-Certificates"></a>服务器证书(Server Certificates)</h4>
+<p>要想了解HTTPS，我们还得先了解一下服务器证书是什么。</p>
+<p>服务器证书是一个显示了组织的名称、地址、服务器 DNS 域名以及其他信息的 X.509 v3 派生证书（参见图 14-17）。你和你所用的客户端软件可以检查证书，以确 保所有的信息都是可信的。</p>
+<p>它是组成Web服务器的SSL安全功能的唯一的数字标识。通过相互信任的第三方组织获得，并为用户提供验证您Web站点身份的手段。服务器证书包含详细的身份验证信息，如服务器内容附属的组织、颁发证书的组织以及称为公开密钥的唯一的身份验证文件。这意味着服务器证书确保用户关于web服务器内容的验证，同时意味着建立的HTTP连接是安全的。</p>
+<h5 id="HTTPS证书包含了哪些内容"><a class="header-anchor" href="#HTTPS证书包含了哪些内容"></a>HTTPS证书包含了哪些内容</h5>
+<p><img src="http://122.51.73.210:3000/upload/2020-9-24/20209248424.png" alt="HTTPS证书内容"></p>
+<h4 id="浏览器如何校验证书"><a class="header-anchor" href="#浏览器如何校验证书"></a>浏览器如何校验证书</h4>
+<p>网景公司提出的一种 Web 服务器证书有效性算法是大部分浏览器有效性验证技术的基础。验证步骤如下所述</p>
+<h5 id="日期检测"><a class="header-anchor" href="#日期检测"></a>日期检测</h5>
+<p>首先，浏览器检查证书的起始日期和结束日期，以确保证书仍然有效。如果证书过期了，或者还未被激活，则证书有效性验证失败，浏览器显示一条错误信息。</p>
+<h5 id="签名颁发者可信度检测。"><a class="header-anchor" href="#签名颁发者可信度检测。"></a>签名颁发者可信度检测。</h5>
+<p>每个证书都是由某些证书颁发机构（CA）签发的，它们负责为服务器担保。证书有不同的等级，每种证书都要求不同级别的背景验证。比如，如果申请某个电子商务服务器证书，通常需要提供一个营业的合法证明。</p>
+<p>任何人都可以生成证书，但有些 CA 是非常著名的组织，它们通过非常清晰的流 程来验证证书申请人的身份及商业行为的合法性。因此，浏览器会附带一个签 名颁发机构的受信列表。如果浏览器收到了某未知（可能是恶意的）颁发机构<br>
+签发的证书，那它通常会显示一条警告信息。有些证书会携带到受信 CA 的有效 签名路径，浏览器可能会选择接受所有此类证书。换句话说，如果某受信 CA 为 “Sam 的签名商店”签发了一个证书，而 Sam 的签名商店也签发了一个站点证 书，浏览器可能会将其作为从有效 CA 路径导出的证书接受。</p>
+<h5 id="签名检测"><a class="header-anchor" href="#签名检测"></a>签名检测</h5>
+<p>一旦判定签名授权是可信的，浏览器就要对签名使用签名颁发机构的公开密钥，并将其与校验码进行比较，以查看证书的完整性。</p>
+<h5 id="站点身份检测"><a class="header-anchor" href="#站点身份检测"></a>站点身份检测</h5>
+<p>为防止服务器复制其他人的证书，或拦截其他人的流量，大部分浏览器都会试着 去验证证书中的域名与它们所对话的服务器的域名是否匹配。服务器证书中通常 都包含一个域名，但有些 CA 会为一组或一群服务器创建一些包含了服务器名称 列表或通配域名的证书。如果主机名与证书中的标识符不匹配，面向用户的客户 端要么就去通知用户，要么就以表示证书不正确的差错报文来终止连接。</p>
+<h4 id="整体请求过程"><a class="header-anchor" href="#整体请求过程"></a>整体请求过程</h4>
+<p>HTTPS的请求过程大致可以分为两个部分，一个是证书验证，一个是数据传输，具体的交互过程如下图所示:<br>
+<img src="http://122.51.73.210:3000/upload/2020-9-24/20209243367.jpg" alt="https的加密验证和数据传输过程"></p>
+<h4 id="加密验证和数据传输的具体过程"><a class="header-anchor" href="#加密验证和数据传输的具体过程"></a>加密验证和数据传输的具体过程</h4>
+<p>待添加具体内容</p>
+<h3 id="参考"><a class="header-anchor" href="#参考"></a>参考</h3>
+<ul>
+<li><a href="https://blog.csdn.net/qq_42046105/article/details/103396972" target="_blank" rel="noopener">【图文讲解】你一定能看懂的HTTPS原理剖析！</a></li>
+<li><a href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%81%E4%B9%A6/808219?fr=aladdin" target="_blank" rel="noopener">服务器证书-百度百科</a></li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xzh</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://xzh97.github.io/2020/08/01/http-protocol/">https://xzh97.github.io/2020/08/01/http-protocol/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>最是人间孤愤难平，直消得几回潮落又潮生！</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/http/"># http</a>
+                    
+                        <a href="/tags/%E5%8D%8F%E8%AE%AE/"># 协议</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/08/23/information-safe/">信息安全学习</a>
+            
+            
+            <a class="next" rel="next" href="/2020/07/22/component-design-custom-transfer/">组件设计思考-CustomTransfer</a>
+            
+        </section>
+
+        
+        
+        <script type="text/javascript" async>
+    let gitalkContainer = document.createElement('div')
+    let postWrap = document.querySelector('.post-wrap');
+    gitalkContainer.id = 'gitalk-container'
+    postWrap.appendChild(gitalkContainer);
+    let params = {
+    clientID: '73f1c80bba01cb73e53d',
+    clientSecret: 'fb38d78684a17e97a441a4cd0db47dc642423678',
+    repo: 'xzh97.github.io',
+    admin: ['xzh97'],
+    id: window.location.pathname,
+    owner: 'xzh97',
+    distractionFreeMode: false,
+    }
+    let gitalk = new Gitalk(params)
+    gitalk.render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xzh | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

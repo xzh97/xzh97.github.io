@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xzh">
+
+
+    <meta name="subtitle" content="何须仰望他人，自己亦是风景">
+
+
+    <meta name="description" content="xzh的个人博客">
+
+
+    <meta name="keywords" content="xzh,博客">
+
+
+<title>web端的离线存储方式 | 追梦的蚂蚁</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="追梦的蚂蚁" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xzh97&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xzh97&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">web端的离线存储方式</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">xzh</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 15, 2019&nbsp;&nbsp;18:02:35</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
+<p>讲道理，之前说过的一<s>天</s>月一篇其实是开玩笑的。莫名其妙就这么久没写过博客了。今天在回家的路上突然想起了这个问题----“从输入url到页面展示的过程有哪些？”。其实也不算突然吧，其实想想好像看面试题的时候经常会出现这么一道题目。今天就照着自己想到的东西来写这么一篇。</p>
+<h2 id="过程"><a class="header-anchor" href="#过程"></a>过程</h2>
+<ul>
+<li>DNS解析输入的域名
+<ul>
+<li>目的：解析域名获取ip</li>
+<li>过程：
+<ol>
+<li>浏览器缓存中查找是否有该域名对应的ip地址</li>
+<li>操作系统缓存中查找是否有该域名对应的ip地址</li>
+<li>向本地域名服务器来请求解析</li>
+<li>向上一级域名服务器请求解析</li>
+<li>重复4步骤，一直到根服务器为止</li>
+<li>返回解析出的结果，并且缓存到本地域名服务器以及操作系统缓存中</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>向服务端发出TCP连接
+<ul>
+<li>目的：获取稳定可靠的连接</li>
+<li>TCP三次握手过程：
+<ol>
+<li>客户端向服务端发出一个数据包</li>
+<li>服务端接收到客户端发送的数据包并打上确认的标记，然后返回给客户端</li>
+<li>客户端接收到数据包，加上确认标记。再次发送给服务端。</li>
+<li>建立连接</li>
+</ol>
+</li>
+<li>TCP四次挥手过程：
+<ol>
+<li>客户端向服务端发出一个数据包。此时客户端进入<code>FIN-WAIT-1</code>（终止等待1）阶段</li>
+<li>服务端接收到数据包然后返回一个确认数据包给客户端。此时服务端进入<code>CLOSE-WAIT</code>（半关闭阶段），客户端接收到报文之后进入<code>FIN-WAIT-2</code>（终止等待2）阶段</li>
+<li>服务端向客户端发出一个数据包（连接释放报文）。此时服务端进入<code>LAST-ACK</code>（最后确认阶段）</li>
+<li>客户端向服务端发出一个数据包（确认报文）。此时客户端进入<code>TIME-WAIT</code>（时间等待）阶段。在过了<code>2MSL</code>(MSL指一个片段在网络中最大的存活时间，2MSL就是一个发送和一个回复所需的最大时间)。之后客户端进入<code>CLOSED</code>阶段，服务端接收到客户端的确认报文之后立马进入<code>CLOSED</code>阶段。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>web端发送请求，服务端返回资源给客户端。</li>
+<li>web端解析并渲染资源（正常结构）
+<ul>
+<li>知识点：web端如何渲染</li>
+<li>渲染过程：
+<ol>
+<li>解析HTML文档构建DOM树，</li>
+<li>解析CSS构建CSSOM</li>
+<li>DOM树和CSSOM合并成一个节点树</li>
+<li>浏览器通过节点树计算节点在页面所处的位置</li>
+<li>浏览器渲染节点</li>
+</ol>
+</li>
+<li>其它知识：
+<ol>
+<li><code>script</code>的加载/执行默认都是会阻塞渲染流程的，除非加了<code>defer</code>(异步加载，延迟按序执行)/<code>async</code>（异步加载，加载完执行）。但是在实际中，加了<code>defer</code>的<code>script</code>脚本也未必会真的按照顺序延迟执行。</li>
+<li><strong>DOM树和CSSOM的渲染是会阻塞的，之前认为的不阻塞其实指的是CSS的解析不会影响到DOM的解析，而渲染是会阻止的</strong></li>
+<li>重绘：节点的视觉属性发生变化，例如<code>color</code>,<code>font</code>等的变化，引起的浏览器重新绘制节点的行为。</li>
+<li>回流：节点的位置属性发生变化，例如<code>left,top,right,bottom,display:none,width,height</code>等的变化，引起的浏览器重新计算节点位置并绘制节点的行为</li>
+<li>重绘和回流的关系： 重绘不一定回流，回流必然会引起重绘</li>
+<li>优化：
+<ul>
+<li>尽量避免直接操作DOM节点</li>
+<li>可以使用<code>position</code>把一些复杂动画的节点脱离文档流。从而避免其父元素及周围元素发生变化从而引起回流</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
+<p>从url输入到页面展示的过程其实大致可分成两部分，一部分是请求，一部分是渲染的部分。请求部分主要又分为dns解析，以及建立/释放tcp连接。渲染部分主要是渲染的步骤。这篇文章其实还可以更细致一些，比如可以讲讲DNS，TCP的具体的东西。之后有空再写把</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xzh</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://xzh97.github.io/2019/12/15/offline-storage/">https://xzh97.github.io/2019/12/15/offline-storage/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>最是人间孤愤难平，直消得几回潮落又潮生！</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/HTML5/"># HTML5</a>
+                    
+                        <a href="/tags/cache/"># cache</a>
+                    
+                        <a href="/tags/web/"># web</a>
+                    
+                        <a href="/tags/%E7%A6%BB%E7%BA%BF%E5%AD%98%E5%82%A8/"># 离线存储</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/12/15/css-summary/">CSS总结</a>
+            
+            
+        </section>
+
+        
+        
+        <script type="text/javascript" async>
+    let gitalkContainer = document.createElement('div')
+    let postWrap = document.querySelector('.post-wrap');
+    gitalkContainer.id = 'gitalk-container'
+    postWrap.appendChild(gitalkContainer);
+    let params = {
+    clientID: '73f1c80bba01cb73e53d',
+    clientSecret: 'fb38d78684a17e97a441a4cd0db47dc642423678',
+    repo: 'xzh97.github.io',
+    admin: ['xzh97'],
+    id: window.location.pathname,
+    owner: 'xzh97',
+    distractionFreeMode: false,
+    }
+    let gitalk = new Gitalk(params)
+    gitalk.render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xzh | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

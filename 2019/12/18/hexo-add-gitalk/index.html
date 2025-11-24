@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xzh">
+
+
+    <meta name="subtitle" content="何须仰望他人，自己亦是风景">
+
+
+    <meta name="description" content="xzh的个人博客">
+
+
+    <meta name="keywords" content="xzh,博客">
+
+
+<title>hexo添加gitalk作为博客评论系统 | 追梦的蚂蚁</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="追梦的蚂蚁" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xzh97&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xzh97&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">hexo添加gitalk作为博客评论系统</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">xzh</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 18, 2019&nbsp;&nbsp;22:55:05</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/hexo/">hexo</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
+<p>莫得评论的博客莫得灵魂——<s>鲁迅</s>。</p>
+<h2 id="Gitalk是什么"><a class="header-anchor" href="#Gitalk是什么"></a>Gitalk是什么</h2>
+<p>Gitalk 一开始应该是<code>github</code>推出来配合搭建博客而做的评论插件。然而随着其他评论插件的没落，Gitalk 就火起来了。<br>
+它基于 <code>Github Issue</code> 和 <code>Preact</code> 开发。<br>
+除了支持 <code>Hexo</code> 外，还支持 <code>java</code>，<code>php</code> 等语言开发的博客。</p>
+<h2 id="为啥用Gitalk"><a class="header-anchor" href="#为啥用Gitalk"></a>为啥用Gitalk</h2>
+<p>之前其实还去看了其它的评论插件。一开始是打算用<code>duoshuo</code>或者<code>disqus</code>这两个插件其中一个（apollo主题自带）。然后:</p>
+<ul>
+<li><code>duoshuo</code>已经停止服务（还有网易云更贴）</li>
+<li><code>disqus</code>的需要<s>科学上网</s></li>
+<li>然后在寻找其它插件的时候碰巧看到了<code>Gitalk</code>，一定是特别的缘分。（其实是看到了<code>git</code>三个字眼）</li>
+</ul>
+<p><strong>搭建步骤</strong></p>
+<ol>
+<li>在github搭建一个仓库来存放评论(因为我的hexo博客是和githubPage绑定的，就不创建新的了。直接用的我的博客仓库)</li>
+<li>把仓库Issue开启（这个好像是默认开启的，如果没改的话就不用动了）</li>
+<li>注册申请一个<code>Github Application</code>(<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">点击此处可进入</a>)<br>
+创建好了之后，复制你的<code>ClientID，ClientSecret</code>。</li>
+<li>在<code>hexo</code>主题下的<code>config.yml</code>文件加入这段：</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gitalk:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#用来做启用判断可以不用，目前没有写相关逻辑</span></span><br><span class="line">    <span class="attr">owner:</span> <span class="comment">#Github 用户名,</span></span><br><span class="line">    <span class="attr">repo:</span>  <span class="comment">#储存评论issue的github仓库名</span></span><br><span class="line">    <span class="attr">admin:</span> <span class="string">[]</span> <span class="comment">#Github 用户名,</span></span><br><span class="line">    <span class="attr">oauth:</span></span><br><span class="line">        <span class="attr">clientID:</span>  <span class="comment">#`Github Application clientID`</span></span><br><span class="line">        <span class="attr">clientSecret:</span>  <span class="comment">#`Github Application clientSecret`</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>找到<code>hexo</code>主题内的评论模板<code>comment.jade</code>和头部模板<code>head.jade</code>，在里面新加以下代码：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 我提前把gitalk的css和js文件下载到本地了</span><br><span class="line">&#x2F;&#x2F; 同时其中的代码根据不同的模板也不一样，这里用的jade仅供参考</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; head</span><br><span class="line">if theme.gitalk.enable</span><br><span class="line">    link(rel&#x3D;&quot;stylesheet&quot;, href&#x3D;url_for(&quot;css&#x2F;gitalk.1.5.0.css&quot;))</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; comment</span><br><span class="line">if theme.gitalk.enable</span><br><span class="line">    #gitalk-container</span><br><span class="line">    script(src&#x3D;url_for(&quot;js&#x2F;gitalk.1.5.0.min.js&quot;))</span><br><span class="line">    script.</span><br><span class="line">        var params &#x3D; &#123;</span><br><span class="line">            clientID:&quot;#&#123;theme.gitalk.oauth.clientID&#125;&quot;,</span><br><span class="line">            clientSecret:&quot;#&#123;theme.gitalk.oauth.clientSecret&#125;&quot;,</span><br><span class="line">            repo:&quot;#&#123;theme.gitalk.repo&#125;&quot;,</span><br><span class="line">            admin:&quot;#&#123;theme.gitalk.admin&#125;&quot;,</span><br><span class="line">            id:window.location.pathname,</span><br><span class="line">            owner:&quot;#&#123;theme.gitalk.owner&#125;&quot;,</span><br><span class="line">            distractionFreeMode: false,</span><br><span class="line">        &#125;;</span><br><span class="line">        var gitalk &#x3D; new Gitalk(params)</span><br><span class="line">        gitalk.render(&#39;gitalk-container&#39;);</span><br></pre></td></tr></table></figure>
+<p><strong>遇到的问题</strong><br>
+一开始，我发现在调用github的api时总是报错，返回状态码为:422。由于之前422我从来没有碰到过。于是我就去搜索了一下422的含义：<br>
+<strong>422 Unprocessable Entity：请求格式正确，但是由于含有语义错误，无法响应。422 则表现为请求格式错误，但出现了 语义 错误，以至于服务端无法响应。可以理解为服务端能理解请求资源类型<code>content-type</code>，否则应该返回 415（Unsupported Media Type），也能理解请求实体内容，否则应该返回 400（Bad Request）。</strong><br>
+后面我根据接口去慢慢调试，发现是请求体中的<code>label=['Gitalk,location.pathname']</code>参数内包含了<code>location.pathname</code>导致的错误。其实这里我并没想传这个<code>location.pathname</code>,我传的应该是<code>pathname</code>的<code>value</code>才对。 然后我才发现，原来<code>config.yml</code>里面的内容其实都是<code>string</code>类型。于是把<code>params.id</code>写在了<code>comment.jade</code>里。最后成功解决了问题。</p>
+<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
+<p>所以说，平时还是要细心点才好。不过这波也不亏。学到了http状态码的知识。422（<strong>格式正确，语义有错误</strong>），415（<strong>不支持该请求资源类型</strong>）,400（<strong>请求实体内容有误。这个一般是请求体内的参数有问题</strong>）<br>
+That’s all! Thanks for watching!</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xzh</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://xzh97.github.io/2019/12/18/hexo-add-gitalk/">https://xzh97.github.io/2019/12/18/hexo-add-gitalk/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>最是人间孤愤难平，直消得几回潮落又潮生！</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/hexo/"># hexo</a>
+                    
+                        <a href="/tags/gitalk/"># gitalk</a>
+                    
+                        <a href="/tags/apollo/"># apollo</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/01/15/url-parse/">从输入URL到页面展示的过程</a>
+            
+            
+            <a class="next" rel="next" href="/2019/12/16/css-bfc/">BFC总结</a>
+            
+        </section>
+
+        
+        
+        <script type="text/javascript" async>
+    let gitalkContainer = document.createElement('div')
+    let postWrap = document.querySelector('.post-wrap');
+    gitalkContainer.id = 'gitalk-container'
+    postWrap.appendChild(gitalkContainer);
+    let params = {
+    clientID: '73f1c80bba01cb73e53d',
+    clientSecret: 'fb38d78684a17e97a441a4cd0db47dc642423678',
+    repo: 'xzh97.github.io',
+    admin: ['xzh97'],
+    id: window.location.pathname,
+    owner: 'xzh97',
+    distractionFreeMode: false,
+    }
+    let gitalk = new Gitalk(params)
+    gitalk.render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xzh | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

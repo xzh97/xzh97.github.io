@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xzh">
+
+
+    <meta name="subtitle" content="何须仰望他人，自己亦是风景">
+
+
+    <meta name="description" content="xzh的个人博客">
+
+
+    <meta name="keywords" content="xzh,博客">
+
+
+<title>CSS总结 | 追梦的蚂蚁</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="追梦的蚂蚁" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xzh97&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xzh97&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/categories">Categories</a>
+                
+                    <a class="menu-item" href="/tags">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">CSS总结</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">xzh</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 15, 2019&nbsp;&nbsp;21:35:25</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
+<p>在前几天的面试题中，碰到了一些css的问题。发现自己虽然可以答出大部分的东西，但是还是有一些不太常见的地方说的不准确。</p>
+<h2 id="CSS"><a class="header-anchor" href="#CSS"></a>CSS</h2>
+<p>CSS就是指层叠样式表(Cascading Style Sheets)，主要是用来定义如何显示HTML文档。是页面更加好看，美观。</p>
+<h2 id="选择器"><a class="header-anchor" href="#选择器"></a>选择器</h2>
+<p>选择器就是用来通过某些条件来选择与CSS规则相匹配的HTML元素。<br>
+选择器主要有以下这些</p>
+<ul>
+<li>通配符（*）：通配符会匹配HTML文档的所有元素</li>
+<li>元素选择器：例：<code>body{}</code>选择HTML文档中的<code>body</code>元素</li>
+<li>类选择器：例：<code>.wrapper{}</code>选择HTML文档中<code>class</code>属性为<code>wrapper</code>的元素</li>
+<li>id选择器：例：<code>#root</code>选择HTML文档中<code>id</code>属性为<code>root</code>的元素</li>
+<li>后代选择器：例：<code>body .wrapper{}</code>选择<code>body</code>元素中的子元素类名为<code>wrapper</code>的元素</li>
+<li>相邻元素选择器：例：<code>div + p{}</code>与<code>div</code>相邻的<code>p</code>元素（ps：<code>div</code>和<code>p</code>有同一个父级）</li>
+<li>属性选择器：例：<code>input[type='text']{}</code>选择<code>input</code>中<code>type</code>为<code>text</code>的元素</li>
+<li>伪类选择器：例：<code>div:hover{ cursor:'pointer'}</code>会在鼠标滑过<code>div</code>时把鼠标变成一个小手</li>
+</ul>
+<h2 id="优先级"><a class="header-anchor" href="#优先级"></a>优先级</h2>
+<p>对于选择器来说，是会有优先级的。主要指浏览器通过优先级来判断哪一些属性值与一个元素最为相关，从而在该元素上应用这些属性值。优先级是基于不同种类选择器组成的匹配规则。<br>
+<strong>优先级的计算方式：!important &gt; 内联 &gt; id选择器(#) &gt; 类选择器(.) &gt; 元素选择器</strong></p>
+<h2 id="继承"><a class="header-anchor" href="#继承"></a>继承</h2>
+<p>html元素可以从父元素那里继承一部分css属性，即使当前元素没有定义该属性。这样可以少重复定义很多的属性。</p>
+<ul>
+<li>不可继承的：display、margin、border、padding、background、height、min-height、max-height、width、min-width、max-width、overflow、position、left、right、top、bottom、z-index、float、clear、table-layout、vertical-align、page-break-after、page-bread-before和unicode-bidi。</li>
+<li>所有元素可继承：visibility和cursor。</li>
+<li>内联元素可继承：letter-spacing、word-spacing、white-space、line-height、color、font、font-family、font-size、font-style、font-variant、font-weight、text-decoration、text-transform、direction。</li>
+<li>终端块状元素可继承：text-indent和text-align。</li>
+<li>列表元素可继承：list-style、list-style-type、list-style-position、list-style-image。</li>
+<li>表格元素可继承：border-collapse。</li>
+</ul>
+<h2 id="CSS3"><a class="header-anchor" href="#CSS3"></a>CSS3</h2>
+<p>CSS3其实也没有什么很多东西，主要就是对于CSS的一些补充和加强。</p>
+<ul>
+<li>font-face 可以设置字体集</li>
+<li>@media 媒体查询，可以设置元素在不同分辨率下的css</li>
+<li>transform 对元素进行2d、3d转换实现对元素的移动、缩放、转动、拉长或拉伸。</li>
+<li>transition 过渡 元素从一种样式逐渐改变为另一种的效果。</li>
+<li>border-radius 边框圆角 是边框可以有圆角</li>
+<li>box-shadow 边框阴影</li>
+<li>box-sizing 盒子模型 设置width和height是否包括内边距（padding）和外边距（margin）
+<ul>
+<li>border-box：设置的 width/height = width/height + margin + padding</li>
+<li>content-box：设置的width/height = width/height</li>
+</ul>
+</li>
+<li>animation，@keyframes 动画</li>
+<li>flex 弹性布局模式 使布局更加舒服</li>
+</ul>
+<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
+<p>css虽然平时用起来其实并不难，可实际上还是有很多的知识点需要学习。毕竟世界不是一成不变的。很多时候都需要发展才能更好的满足开发需要。哦对了,这里强烈推荐<a href="https://www.zhangxinxu.com/" target="_blank" rel="noopener">张鑫旭</a>的博客网站。他对于css的理解真的非常深，网站有很多好文，看了让人受益良多。<br>
+That’s all! Thanks for watching!</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xzh</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://xzh97.github.io/2019/12/15/css-summary/">https://xzh97.github.io/2019/12/15/css-summary/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>最是人间孤愤难平，直消得几回潮落又潮生！</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/CSS/"># CSS</a>
+                    
+                        <a href="/tags/%E9%80%89%E6%8B%A9%E5%99%A8/"># 选择器</a>
+                    
+                        <a href="/tags/%E4%BC%98%E5%85%88%E7%BA%A7/"># 优先级</a>
+                    
+                        <a href="/tags/CSS%E7%BB%A7%E6%89%BF/"># CSS继承</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/12/16/css-bfc/">BFC总结</a>
+            
+            
+            <a class="next" rel="next" href="/2019/12/15/offline-storage/">web端的离线存储方式</a>
+            
+        </section>
+
+        
+        
+        <script type="text/javascript" async>
+    let gitalkContainer = document.createElement('div')
+    let postWrap = document.querySelector('.post-wrap');
+    gitalkContainer.id = 'gitalk-container'
+    postWrap.appendChild(gitalkContainer);
+    let params = {
+    clientID: '73f1c80bba01cb73e53d',
+    clientSecret: 'fb38d78684a17e97a441a4cd0db47dc642423678',
+    repo: 'xzh97.github.io',
+    admin: ['xzh97'],
+    id: window.location.pathname,
+    owner: 'xzh97',
+    distractionFreeMode: false,
+    }
+    let gitalk = new Gitalk(params)
+    gitalk.render('gitalk-container')
+</script>
+        
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xzh | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
